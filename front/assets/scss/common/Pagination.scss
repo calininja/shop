@@ -1,0 +1,48 @@
+.pagination__container{
+    text-align: center;
+    ul,button{
+        vertical-align: middle;
+    }
+    button{
+        position: relative;
+        background: none;
+        border: 0;
+        text-indent: -9999px;
+        &::before, &::after{
+            position: absolute;
+            background: #000000;
+            width: 10px;
+            height: 1px;
+            display: block;
+            clear: both;
+            content:'';
+        }
+        &::before{
+            top: 6px;
+            transform: rotate(45deg);
+        }
+        &::after{
+            top: 13px;
+            transform: rotate(-45deg);
+        }
+        &.prev{
+            transform: rotate(-180deg);
+        }
+        &.prev--none, &.next--none{
+            display: none;
+        }
+    }
+    ul{
+        display: inline-block;
+        margin: 0 5px;
+        li{
+            display: inline-block;
+            font: 400 16px/16px $noto;
+            margin: 0 5px;
+            cursor: pointer;
+            &.active{
+                font-weight: bold;
+            }
+        }
+    }
+}

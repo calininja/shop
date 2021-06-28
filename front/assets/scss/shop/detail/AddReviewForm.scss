@@ -1,0 +1,35 @@
+.add-review-form__container{
+    width: 500px;
+    height: auto;
+    padding: 1rem;
+    background-color: #ffffff;
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;
+    @include after();
+    .close{
+        float: right;
+        background: none;
+        border: 0;
+        font: inherit;
+    }
+    textarea{
+        width: 96%;
+        height: auto;
+        margin: 10px 0;
+        padding: 10px;
+        font: 300 16px/25px $noto;
+        color: #111111;
+        border: 1.5px solid #111111;
+        resize: none;
+        text-indent: 0;
+    }
+    .custom-button{
+        display: block;
+        vertical-align: top;
+        margin: 0 0 0 auto;
+    }
+    @media screen and (max-device-width: 414px) {
+        width: 90%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,61 @@
+// common
+@import './common/mixin.scss';
+@import './common/reset.scss';
+
+// components
+@import './AppLayout.scss';
+@import './about/About.scss';
+@import './CategoryMenu.scss';
+@import './cart/CartPopup.scss';
+@import './common/ProgressBar.scss';
+@import './common/Slick.scss';
+@import './common/StarRating.scss';
+@import './common/Pagination.scss';
+@import './common/LatestProducts.scss';
+@import './common/ModalContainer.scss';
+@import './common/Modal.scss';
+@import './common/LabelInput.scss';
+@import './common/Button.scss';
+@import './Footer.scss';
+@import './Header.scss';
+@import './Home.scss';
+@import './shop/detail/AddReviewForm.scss';
+@import './shop/detail/ReviewContainer.scss';
+@import './shop/detail/DetailContainer.scss';
+@import './shop/ListContainer.scss';
+
+
+// next/pages
+@import './admin/PostForm.scss';
+@import './admin/DeleteForm.scss';
+@import './user/SignForm.scss';
+@import './user/UserInfo.scss';
+@import './order/Order.scss';
+@import './order/CompleteOrder.scss';
+@import './cart/Cart.scss';
+@import './shop/Shop.scss';
+
+
+// darkmode
+:root{
+    --background1: #ffffff;
+    --background2: #ffffff;
+    --color1: #000000;
+    --revert: #ffffff;
+}
+:root[color-theme='light'] {
+    --background: #ffffff;
+    --color1: #000000;
+}
+:root[color-theme='dark'] {
+    --background: rgba(0,0,0,0.8);
+    --color1: #ffffff;
+    --color2: #f5f5f7;
+}
+.darkmode{
+    --background1: rgba(0,0,0,0.8);
+    --background2: #2d3134;
+    --color1: #ffffff;
+    --color2: #f5f5f7;
+    --revert: #000000;
+}

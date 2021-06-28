@@ -1,0 +1,36 @@
+.footer__container{
+    background: #ffffff;
+    border-top: 1px solid #cccccc;
+    width: 95%;
+    margin: 0 auto;
+    .footer__wrapper{
+        text-align: center;
+        padding: 100px 0;
+        .icons{
+            text-indent: -9999px;
+        }
+        .footer__menu{
+            ul{
+                li{
+                    display: inline-block;
+                    margin: 0 10px;
+                    a{
+                        font: 300 12px/12px $noto;
+                        color: #111111;
+                    }
+                }
+            }
+        }
+        p{
+           font: 300 12px/12px $noto;
+           color: #515154;
+           text-align: center;
+           margin: 10px 0;
+        }
+        span{
+           font: 300 12px/12px $noto;
+           color: #515154;
+           margin: 10px 0;
+        }
+    }
+}

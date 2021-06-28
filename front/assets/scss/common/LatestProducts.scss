@@ -1,0 +1,39 @@
+.latest-product__container{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 30%;
+    margin: 0 auto;
+    h3{
+        font: 400 28px/28px $noto;
+        color: #000000;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    a{
+        width: calc(33.3% - 6px);
+        display: inline-block;
+        background: #ffffff;
+        margin: 0 1px;
+        border: 1px solid #000000;
+        img{
+            width: 100%;
+        }
+        p{
+            font: 500 12px/12px $noto;
+            color: #000000;
+            text-align: center;
+            padding: 10px 0;
+            white-space: nowrap;
+        }
+    }
+    @media screen and (max-device-width: 414px) {
+        width: 90%;
+        position: relative;
+        bottom: 0;
+        left: 0;
+        transform: unset;
+    }
+}

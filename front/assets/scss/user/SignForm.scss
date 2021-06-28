@@ -1,0 +1,81 @@
+.sign__container{
+    position: relative;
+    width: 250px;
+    height: auto;
+    min-height: 260px;
+    margin: 0 auto;
+    padding: 50px 50px 100px;
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;
+    transition: all 0.5s ease-in;
+    z-index: 1;
+    form{
+        @include after();
+        .label-input__block{
+            label{
+                font: 300 12px/15px $noto;
+                vertical-align: middle;
+            }
+            >input{
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+        >a{
+            display: block;
+            width: 100%;
+            margin-top: 5px;
+            img{
+                width: 100%;
+                margin: 0 auto;
+                cursor: pointer;
+            }
+        }
+        .sign__buttons{
+            position: absolute;
+            bottom: 30px;
+            button{
+                margin: 10px 2px;
+            }
+            div{
+                font: 400 14px/14px $noto;
+                color: #111111;
+                .toggle{
+                    font: 400 14px/14px $noto;
+                    color: #249e6b;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    &.signup{
+        .label-input__block{
+            >input:not(for:agreement){
+                width: 100%;
+                margin: 1px 0;
+            }
+
+            label{
+                font: 300 12px/15px $noto;
+                vertical-align: middle;
+            }
+            button{
+                display: block;
+            }
+        }
+        input#agreement{
+            display: inline-block;
+            text-align: left;
+            margin: 13px 5px 13px 0;
+            vertical-align: middle;
+        }
+        .invalid{
+            font: 400 14px/30px $noto;
+            color: red;
+        }
+        .valid{
+            font: 400 14px/30px $noto;
+            color: green;
+        }
+    }
+}

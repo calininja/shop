@@ -1,0 +1,123 @@
+import * as React from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { registerUser } from 'thunks/users';
+import { registerDone } from 'slices/users';
+import { selectUsers } from "selectors/user";
+import { showModal } from 'slices/cores';
+import useInputs from 'lib/hooks/useInputs';
+import LabelInput from 'components/common/LabelInput';
+import Button from 'components/common/Button';
+
+const SignUpForm: React.FunctionComponent = () => {
+
+    const dispatch = useDispatch();
+    const [value, onChange] = useInputs({
+        id: '',
+        password: '',
+        passwordCheck: ''
+    })
+    const { id, password, passwordCheck } = value;
+
+    const [passwordError, setPasswordError] = useState(false);
+    const [agreement, setAgreement] = useState(false);
+    const { isSignUpDone, error } = useSelector(selectUsers());
+
+    useEffect(() => {
+        if (isSignUpDone == true) {
+            alert('회원가입이 완료되었습니다.');
+            dispatch(showModal(false))
+            dispatch(registerDone());
+        }
+    }, [isSignUpDone]);
+
+    useEffect(() => {
+        if (password != passwordCheck) {
+            setPasswordError(true);
+        } else {
+            setPasswordError(false);
+        }
+    }, [password, passwordCheck])
+
+    const onChangeAgreement = (e) => {
+        if (agreement) {
+            setAgreement(true);
+        } else {
+            setAgreement(false);
+        }
+    }
+
+    const onSubmit = useCallback((e) => {
+        e.preventDefault();
+        const data = {
+            signinId: id,
+            password,
+        }
+        if (id.length < 5) return alert('아이디는 5글자 이상으로 작성하여 주세요.');
+        if (password.length < 5) return alert('패스워드는 5글자 이상으로 작성하여 주세요.');
+        dispatch(registerUser(data));
+    }, [id, password, passwordCheck])
+
+    const onClickToggle = () => dispatch(showModal({ visible: true, mode: 'LOGIN' }));
+
+    return (
+        <div className="sign__container signup">
+            <form onSubmit={onSubmit}>
+                <LabelInput
+                    label="id"
+                    name="id"
+                    value={id}
+                    placeholder="아이디"
+                    onChange={onChange}
+                />
+                {
+                    error && Object.values(error).toString().includes('403')
+                        ? <div className="invalid">아이디가 존재 합니다.</div> : ''
+                }
+                <LabelInput
+                    label="password"
+                    name="password"
+                    value={password}
+                    placeholder="패스워드"
+                    onChange={onChange}
+                    type="password"
+                    required
+                />
+                <LabelInput
+                    label="passwordCheck"
+                    name="passwordCheck"
+                    value={passwordCheck}
+                    placeholder="패스워드 확인"
+                    onChange={onChange}
+                    type="password"
+                    required
+                />
+                {
+                    passwordCheck == '' ?
+                        ''
+                        : passwordError ?
+                            <div className="invalid">패스워드가 일치하지 않습니다.</div>
+                            : <div className="valid">패스워드가 일치 합니다.</div>
+                }
+                <input id="agreement" type="checkbox" onChange={onChangeAgreement} required /><label htmlFor="agreement">약관 동의</label>
+                <div className="sign__buttons">
+                    <Button type="submit">회원가입</Button>
+                    <div>계정이 이미 있으신가요?
+                        <span className="toggle" onClick={onClickToggle}> 로그인</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    );
+};
+
+export const getServerSideProps = async (context: any) => {
+
+    return {
+        props: {
+            pathname: '/SignUpForm',
+        }
+    };
+}
+
+export default SignUpForm;

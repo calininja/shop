@@ -1,0 +1,16 @@
+section{
+    position: relative;
+}
+main{
+    overflow: hidden;
+    .contents__container{
+        width: 95%;
+        min-width: 95%;
+        margin: 0 auto 150px;
+        @media screen and (max-device-width: 414px) {
+            width: 100%;
+            min-width: unset;
+            margin-top: 0;
+        }
+    }
+}
