@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadReviews } from 'thunks';
 import { selectProducts } from 'selectors/product';
 
-const useReviewLoader = (obj) => {
+export default function useReviewLoader (obj) {
     const dispatch = useDispatch();
     const { isAddingReview, isDeletingReview } = useSelector(selectProducts());
 
@@ -17,5 +17,3 @@ const useReviewLoader = (obj) => {
     }, [isAddingReview, isDeletingReview]);
 
 };
-
-export default useReviewLoader;

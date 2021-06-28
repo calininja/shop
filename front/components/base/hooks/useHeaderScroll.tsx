@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 
-export function useHeaderScroll() {
+export default function useHeaderScroll() {
 
     const onScroll = (elem) => {
         const item: any = document.querySelector('.nav-scroll');
@@ -20,5 +20,3 @@ export function useHeaderScroll() {
         };
     }, []);
 };
-
-export default useHeaderScroll;

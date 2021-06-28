@@ -6,6 +6,7 @@ import usePopupCss from './hooks/usePopupCss';
 import useHeaderScroll from './hooks/useHeaderScroll';
 import useCartLoader from './hooks/useCartLoader';
 import useViewedProduct from './hooks/useViewedProduct';
+import useInfiniteScroll from './hooks/useInfiniteScroll';
 
 interface ICoreProps {
 }
@@ -19,6 +20,7 @@ const Core: React.FunctionComponent<ICoreProps> = ({
     useHeaderScroll();
     useCartLoader();
     useViewedProduct();
+    useInfiniteScroll();
 
     return (
         <>

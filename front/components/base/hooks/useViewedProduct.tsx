@@ -5,7 +5,7 @@ import { selectProducts } from 'selectors/product';
 import { addViewedProducts } from 'thunks/products';
 // import { addViewedProducts } from 'slices/products';
 
-const useViewedProduct = () => {
+export default function useViewedProduct () {
     const dispatch = useDispatch();
     const { product } = useSelector(selectProducts());
     const [getSession, setGetSession] = useState(false);
@@ -43,5 +43,3 @@ const useViewedProduct = () => {
 
     }, [getSession, product]);
 };
-
-export default useViewedProduct;

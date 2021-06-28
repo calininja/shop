@@ -13,7 +13,7 @@ interface ISignInFormProps {
 }
 
 const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
-    const { isSigningIn, error } = useSelector(selectUsers());
+    const { me, isSigningIn, error } = useSelector(selectUsers());
     const dispatch = useDispatch();
     const [value, onChange] = useInputs({
         id: '',
@@ -25,8 +25,14 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
         if (isSigningIn == false && error && Object.values(error).toString().includes('401')) {
             alert('아이디 혹은 비밀번호가 틀렸습니다.');
         }
-        dispatch(showModal({ visible: true, mode: 'LOGIN' }));
+        if(me){
+            dispatch(showModal({ visible: false, mode: 'LOGIN' }));
+        } else {
+            dispatch(showModal({ visible: true, mode: 'LOGIN' }));
+        }
     }, [isSigningIn, error])
+
+    const onClickToggle = () => dispatch(showModal({ visible: true, mode: 'JOIN' }));
 
     const onLogin = useCallback((e) => {
         e.preventDefault();
@@ -35,10 +41,8 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
             signinId: id, password: password
         }
         dispatch(signInUser(data));
-        dispatch(showModal({ visible: false, mode: 'LOGIN' }));
     }, [id, password])
 
-    const onClickToggle = () => dispatch(showModal({ visible: true, mode: 'JOIN' }));
 
     return (
         <div className="sign__container signin">

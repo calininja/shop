@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectCores } from 'selectors/core';
 
 
-const usePopup = () => {
+export default function usePopup () {
     const { visible } = useSelector(selectCores());
 
     useEffect(() => {
@@ -20,5 +20,3 @@ const usePopup = () => {
     }, [visible])
 
 };
-
-export default usePopup;

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import wrapper from 'store';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
@@ -12,28 +11,7 @@ import { loadCart } from 'thunks/orders';
 
 const CategoryAll: React.FunctionComponent = () => {
 
-    const dispatch = useDispatch();
-    const countRef = useRef([]);
-    const { products, hasMoreProduct, isLoadingPost } = useSelector(selectProducts());
-
-    useEffect(() => {
-        function onScroll() {
-            if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
-                if (hasMoreProduct && !isLoadingPost) {
-                    const lastId = products[products.length - 1]?.id;
-                    if (!countRef.current.includes(lastId)) {
-                        dispatch(loadProducts(lastId));
-                    }
-                    countRef.current.push(lastId);
-                }
-            }
-        }
-        window.addEventListener('scroll', onScroll);
-        return () => {
-            window.removeEventListener('scroll', onScroll);
-        };
-    }, [hasMoreProduct, isLoadingPost, products]);
-
+    const { products } = useSelector(selectProducts());
 
     return (
         <section className="shop__container">

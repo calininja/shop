@@ -5,7 +5,7 @@ import { loadCart } from 'thunks';
 import { selectUsers } from 'selectors/user';
 import { selectOrders } from 'selectors/order';
 
-const useCartLoader = () => {
+export default function useCartLoader () {
     const dispatch = useDispatch();
     const { me } = useSelector(selectUsers());
     const { isAddingCart, isDeletingCart } = useSelector(selectOrders());
@@ -18,5 +18,3 @@ const useCartLoader = () => {
     }, [me, isAddingCart, isDeletingCart]);
 
 };
-
-export default useCartLoader;
