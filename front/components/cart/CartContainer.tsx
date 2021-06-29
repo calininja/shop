@@ -32,7 +32,6 @@ const CartContainer: React.FunctionComponent<ICartProps> = ({
                 <label htmlFor="checkAll">전체 선택</label>
             </div>
             {
-                // 회원
                 orders.map((v, i) => {
                     const id = v.products.id;
                     return (

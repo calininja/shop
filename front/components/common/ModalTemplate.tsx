@@ -5,7 +5,7 @@ interface IModalProps {
     close: () => void;
 }
 
-const Modal: React.FunctionComponent<IModalProps> = ({
+const ModalTemplate: React.FunctionComponent<IModalProps> = ({
     toggle,
     close,
     children
@@ -21,4 +21,4 @@ const Modal: React.FunctionComponent<IModalProps> = ({
     );
 };
 
-export default Modal;
+export default ModalTemplate;

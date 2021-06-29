@@ -7,7 +7,9 @@ interface IProductSize {
     onClickSize: (v: string | object) => void;
 }
 
-const ProductSize: React.FunctionComponent<IProductSize> = ({ onClickSize }) => {
+const ProductSize: React.FunctionComponent<IProductSize> = ({ 
+    onClickSize
+ }) => {
 
     const { product } = useSelector(selectProducts());
     const [activeSize, setActiveSize] = useState(null);

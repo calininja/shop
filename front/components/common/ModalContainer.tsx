@@ -7,7 +7,7 @@ import SignInForm from 'pages/user/SignInForm';
 import SignUpForm from 'pages/user/SignUpForm';
 import AddReviewForm from 'components/shop/Detail/AddReviewForm';
 import Review from 'components/shop/Detail/Review';
-import Modal from './Modal';
+import ModalTemplate from './ModalTemplate';
 
 const ModalContainer: React.FunctionComponent = ({
 
@@ -28,12 +28,12 @@ const ModalContainer: React.FunctionComponent = ({
     return (
         <>
             <div className="overlay"></div>
-            <Modal toggle={toggle} close={close} >
+            <ModalTemplate toggle={toggle} close={close} >
                 {mode == 'LOGIN' && <SignInForm />}
                 {mode == 'JOIN' && <SignUpForm />}
                 {mode == 'REVIEW' && <Review />}
                 {mode == 'ADD_REVIEW' && <AddReviewForm />}
-            </Modal>
+            </ModalTemplate>
         </>
     );
 };

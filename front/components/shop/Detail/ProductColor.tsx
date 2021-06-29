@@ -4,12 +4,15 @@ import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
 import Link from 'next/link';
 
-interface IProductColor {
+interface IProductColorProps {
     products: any;
     onClickColor: (v: string | object) => void;
 }
 
-const ProductColor: React.FunctionComponent<IProductColor> = ({ products, onClickColor }) => {
+const ProductColor: React.FunctionComponent<IProductColorProps> = ({ 
+    products,
+    onClickColor
+}) => {
 
     const { product } = useSelector(selectProducts());
     const [activeColor, setActiveColor] = useState(null);

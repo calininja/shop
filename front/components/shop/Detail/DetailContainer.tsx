@@ -10,10 +10,13 @@ import ProductImage from './ProductImage';
 import ProductSize from './ProductSize';
 import ProductColor from './ProductColor';
 import CartPopup from '../../cart/CartPopup';
-import Preview from './Preview';
 import ViewedProduct from '../../common/ViewedProduct';
 import useReviewLoader from 'components/base/hooks/useReviewLoader';
 import useToggle from 'lib/hooks/useToggle';
+import { toast } from 'react-toastify';
+import ProductQuantity from './ProductQuantity';
+import ProductCategory from './ProductCategory';
+import PreviewContainer from './PreviewContainer';
 
 interface IProductProps {
     obj: {
@@ -35,13 +38,17 @@ const DetailContainer: React.FunctionComponent<IProductProps> = ({ obj }) => {
     const [preview, setPreview] = useToggle(false);
 
     useReviewLoader(obj);
+
     useEffect(() => {
         const data = {
             color,
             size,
             quantity
         };
-        if (isAddingCart) return setPopData(data);
+        if (isAddingCart) {
+            setPopData(data);
+            return;
+        }
     }, [color, size, quantity, popData, isAddingCart]);
 
     // onClick 사이즈 & 컬러
@@ -58,10 +65,22 @@ const DetailContainer: React.FunctionComponent<IProductProps> = ({ obj }) => {
     // 회원 장바구니 Submit
     const onSubmit = useCallback((e) => {
         e.preventDefault();
-        if (!me) return alert('로그인이 필요합니다.');
-        if (color == '') return alert('색상을 선택하여 주십시오.');
-        if (size == '') return alert('사이즈를 선택하여 주십시오.');
-        if (orders.length >= 10) return alert('10개 까지만 가능합니다.');
+        if (!me) {
+            toast.error('로그인이 필요합니다.');
+            return;
+        }
+        if (color == '') {
+            toast.error('색상을 선택하여 주십시오.');
+            return;
+        }
+        if (size == '') {
+            toast.error('사이즈를 선택하여 주십시오.');
+            return;
+        }
+        if (orders.length >= 10) {
+            toast.error('10개 까지만 가능합니다.');
+            return;
+        }
         const formData = new FormData();
         formData.append('size', size);
         formData.append('color', color);
@@ -77,38 +96,24 @@ const DetailContainer: React.FunctionComponent<IProductProps> = ({ obj }) => {
             <ProductImage />
             <div className="product-information">
                 <form action="" onSubmit={onSubmit}>
-                    <span className="category">
-                        {products.map((v, i) => {
-                            if (products[i].id == product.id) {
-                                return (
-                                    <div key={v.id}>
-                                        {v.categories.name}
-                                    </div>
-                                )
-                            }
-                        })}
-                    </span>
+                    <ProductCategory 
+                        products={products}
+                    />
                     <h2 className="product__title">
                         {product.title}
                     </h2>
-                    <ProductColor products={products} onClickColor={onClickColor} />
-                    <ProductSize onClickSize={onClickSize} />
-                    <div className={quantity > 9 ? "product-quantity exceeded" : "product-quantity"}>
-                        <span className="product__head border-none">수량</span>
-                        <div className="product-quantity__wrapper">
-                            <em>{quantity}</em>
-                            <span
-                                onClick={decrease}
-                                className={quantity <= 1 ? "inactive counting" : "counting"}
-                            >-
-                            </span>
-                            <span
-                                onClick={increase}
-                                className="counting"
-                            >+
-                            </span>
-                        </div>
-                    </div>
+                    <ProductColor 
+                        products={products} 
+                        onClickColor={onClickColor} 
+                    />
+                    <ProductSize 
+                        onClickSize={onClickSize} 
+                    />
+                    <ProductQuantity 
+                        quantity={quantity}
+                        increase={increase}
+                        decrease={decrease}
+                    />
                     <div className="product__price">
                         <span>{product.price ? product.price.toLocaleString() : ''}</span> 원
                     </div>
@@ -124,17 +129,13 @@ const DetailContainer: React.FunctionComponent<IProductProps> = ({ obj }) => {
                         <p className="product-description">{product.content}</p>
                     </pre>
                 </div>
-                <div className="product-review__container">
-                    <span className="product__head" onClick={onClickPreview}>리뷰({allReviews ? allReviews : '0'})</span>
-                    {preview ?
-                        <Preview
-                            reviews={reviews}
-                            obj={obj}
-                        />
-                        :
-                        ''
-                    }
-                </div>
+                <PreviewContainer
+                    obj={obj}
+                    preview={preview}
+                    reviews={reviews}
+                    allReviews={allReviews}
+                    onClickPreview={onClickPreview}
+                />
             </div>
             {viewedProducts && <ViewedProduct viewedProducts={viewedProducts} />}
             {me && orders && <CartPopup popData={popData} />}

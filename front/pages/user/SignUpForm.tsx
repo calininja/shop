@@ -8,7 +8,6 @@ import { showModal } from 'slices/cores';
 import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
-import useToggle from 'lib/hooks/useToggle';
 import { toast } from 'react-toastify';
 
 const SignUpForm: React.FunctionComponent = () => {
@@ -21,7 +20,6 @@ const SignUpForm: React.FunctionComponent = () => {
     })
     const { id, password, passwordCheck } = value;
 
-    const [agreement, setAgreement] = useToggle(false);
     const { isSignUpDone, error } = useSelector(selectUsers());
 
     useEffect(() => {
@@ -32,7 +30,7 @@ const SignUpForm: React.FunctionComponent = () => {
         }
     }, [isSignUpDone]);
 
-    const onChangeAgreement = () => agreement ? setAgreement() : setAgreement();
+    const onClickToggle = () => dispatch(showModal({ visible: true, mode: 'LOGIN' }));
 
     const onSubmit = useCallback((e) => {
         e.preventDefault();
@@ -44,8 +42,6 @@ const SignUpForm: React.FunctionComponent = () => {
         if (password.length < 5) return alert('패스워드는 5글자 이상으로 작성하여 주세요.');
         dispatch(registerUser(data));
     }, [id, password, passwordCheck])
-
-    const onClickToggle = () => dispatch(showModal({ visible: true, mode: 'LOGIN' }));
 
     return (
         <div className="sign__container signup">
@@ -85,7 +81,6 @@ const SignUpForm: React.FunctionComponent = () => {
                         <div className="invalid">패스워드가 일치하지 않습니다.</div>
                         : <div className="valid">패스워드가 일치 합니다.</div>
                 }
-                <input id="agreement" type="checkbox" onChange={onChangeAgreement} required /><label htmlFor="agreement">약관 동의</label>
                 <div className="sign__buttons">
                     <Button type="submit">회원가입</Button>
                     <div>계정이 이미 있으신가요?
