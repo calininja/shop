@@ -9,6 +9,7 @@ import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
 import useToggle from 'lib/hooks/useToggle';
+import { toast } from 'react-toastify';
 
 const SignUpForm: React.FunctionComponent = () => {
 
@@ -25,7 +26,7 @@ const SignUpForm: React.FunctionComponent = () => {
 
     useEffect(() => {
         if (isSignUpDone == true) {
-            alert('회원가입이 완료되었습니다.');
+            toast.info('회원가입이 완료되었습니다.');
             dispatch(showModal(false));
             dispatch(registerDone());
         }

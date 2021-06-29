@@ -22,8 +22,7 @@ const Cart: React.FunctionComponent = () => {
     const amount = useCallback(() => {
         const arr = [];
         orders.forEach((v, i) => {
-            const vol = v.quantity;
-            if (itemCheck.includes(v.id)) arr.push(v.products.price * vol);
+            if (itemCheck.includes(v.id)) arr.push(v.products.price * v.quantity);
         })
         const result = arr.length > 0 && arr.reduce((acc, cur, i) => acc + cur);
         return arr.length > 0 ? result + 3000 : 0;

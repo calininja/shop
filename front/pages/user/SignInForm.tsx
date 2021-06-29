@@ -8,6 +8,7 @@ import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
 import { backUrl } from 'config/config';
 import { selectUsers } from 'selectors/user';
+import { toast } from 'react-toastify';
 
 interface ISignInFormProps {
 }
@@ -23,7 +24,11 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
 
     useEffect(() => {
         const unauth = me == null && isSigningIn == false && error && Object.values(error).toString().includes('401');
-        if (unauth) return alert('아이디 혹은 비밀번호가 틀렸습니다.');
+        if (unauth) {
+            toast.error('아이디 혹은 비밀번호가 틀렸습니다.');
+            return;
+        }
+
         if (me) dispatch(showModal({ visible: false, mode: 'LOGIN' }));
     }, [me, isSigningIn, error])
 
@@ -31,7 +36,10 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
 
     const onLogin = useCallback((e) => {
         e.preventDefault();
-        if (!id || !password) return alert('내용을 입력해주세요.');
+        if (!id || !password) {
+            alert('내용을 입력해주세요.');
+            return
+        }
         const data = {
             signinId: id, password: password
         }

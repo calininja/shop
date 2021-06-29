@@ -14,6 +14,7 @@ import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import LabelTextArea from 'components/common/LabelTextArea';
 import Button from 'components/common/Button';
+import { toast } from 'react-toastify';
 
 const PostForm: React.FunctionComponent = () => {
 
@@ -67,11 +68,26 @@ const PostForm: React.FunctionComponent = () => {
     // Submit
     const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!title || !title.trim()) return alert('제목을 작성하세요.');
-        if (!content || !content.trim()) return alert('게시글을 작성하세요.');
-        if (!size || !size.trim()) return alert('사이즈를 작성하세요.');
-        if (!price || !price.trim()) return alert('금액을 작성하세요.');
-        if (!color) alert('색상을 선택 하세요.');
+        if (!title) {
+            toast.error('제목을 작성하세요.');
+            return;
+        }
+        if (!content) {
+            toast.error('게시글을 작성하세요.');
+            return;
+        }
+        if (!size) {
+            toast.error('사이즈를 작성하세요.');
+            return;
+        }
+        if (!price) {
+            toast.error('금액을 작성하세요.');
+            return;
+        }
+        if (!color) {
+            toast.error('색상을 선택 하세요.');
+            return;
+        }
         const formData = new FormData();
         formData.append('title', title);
         formData.append('content', content);
