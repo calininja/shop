@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import LabelInput from 'components/common/LabelInput';
-import Button from 'components/common/Button';
+import useToggle from 'lib/hooks/useToggle';
 
 interface IAddressProps {
     findAddress: (val1: string, val2: string) => void;
@@ -20,17 +20,13 @@ const AddressPopup: React.FunctionComponent<IAddressProps> = ({
     const { address, zipcode, detailAddress } = addressState;
 
     // 팝업창 상태 관리
-    const [isPopupOpen, setIsPopupOpen] = useState(false)
+    const [isPopupOpen, setIsPopupOpen] = useToggle(false)
 
     // 팝업창 열기
-    const openPostCode = () => {
-        setIsPopupOpen(true)
-    }
+    const openPostCode = () => setIsPopupOpen()
 
     // 팝업창 닫기
-    const closePostCode = () => {
-        setIsPopupOpen(false)
-    }
+    const closePostCode = () => setIsPopupOpen()
 
     return (
         <>
@@ -45,8 +41,6 @@ const AddressPopup: React.FunctionComponent<IAddressProps> = ({
                 type="text"
                 required
             />
-            {/* <label htmlFor="address">주소</label>
-            <input type="text" id="zipcode" required className="custom-input" placeholder="우편번호" name="zipcode" value={zipcode} /> */}
             {/* 버튼 클릭 시 팝업 생성 */}
             <LabelInput
                 label="주소"
@@ -66,12 +60,6 @@ const AddressPopup: React.FunctionComponent<IAddressProps> = ({
                 type="text"
                 required
             />
-            {/* <div>
-                <input type="text" required className="custom-input" placeholder="주소" name="address" value={address} />
-            </div> */}
-            {/* <div>
-                <input type="text" required className="custom-input" placeholder="상세 주소" name="detailAddress" value={detailAddress} onChange={onChange} />
-            </div> */}
             {/* 팝업 생성 기준 div */}
             <div id='popupDom'>
                 {isPopupOpen && (

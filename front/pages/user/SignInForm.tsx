@@ -22,21 +22,16 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
     const { id, password } = value;
 
     useEffect(() => {
-        if (isSigningIn == false && error && Object.values(error).toString().includes('401')) {
-            alert('아이디 혹은 비밀번호가 틀렸습니다.');
-        }
-        if(me){
-            dispatch(showModal({ visible: false, mode: 'LOGIN' }));
-        } else {
-            dispatch(showModal({ visible: true, mode: 'LOGIN' }));
-        }
-    }, [isSigningIn, error])
+        const unauth = me == null && isSigningIn == false && error && Object.values(error).toString().includes('401');
+        if (unauth) return alert('아이디 혹은 비밀번호가 틀렸습니다.');
+        if (me) dispatch(showModal({ visible: false, mode: 'LOGIN' }));
+    }, [me, isSigningIn, error])
 
     const onClickToggle = () => dispatch(showModal({ visible: true, mode: 'JOIN' }));
 
     const onLogin = useCallback((e) => {
         e.preventDefault();
-        if (!id || !password) return alert('empty!');
+        if (!id || !password) return alert('내용을 입력해주세요.');
         const data = {
             signinId: id, password: password
         }
@@ -54,7 +49,6 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
                     placeholder="아이디"
                     onChange={onChange}
                 />
-
                 <LabelInput
                     label="password"
                     name="password"

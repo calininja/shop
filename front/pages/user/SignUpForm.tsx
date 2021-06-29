@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { registerUser } from 'thunks/users';
 import { registerDone } from 'slices/users';
@@ -8,6 +8,7 @@ import { showModal } from 'slices/cores';
 import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
+import useToggle from 'lib/hooks/useToggle';
 
 const SignUpForm: React.FunctionComponent = () => {
 
@@ -19,33 +20,18 @@ const SignUpForm: React.FunctionComponent = () => {
     })
     const { id, password, passwordCheck } = value;
 
-    const [passwordError, setPasswordError] = useState(false);
-    const [agreement, setAgreement] = useState(false);
+    const [agreement, setAgreement] = useToggle(false);
     const { isSignUpDone, error } = useSelector(selectUsers());
 
     useEffect(() => {
         if (isSignUpDone == true) {
             alert('회원가입이 완료되었습니다.');
-            dispatch(showModal(false))
+            dispatch(showModal(false));
             dispatch(registerDone());
         }
     }, [isSignUpDone]);
 
-    useEffect(() => {
-        if (password != passwordCheck) {
-            setPasswordError(true);
-        } else {
-            setPasswordError(false);
-        }
-    }, [password, passwordCheck])
-
-    const onChangeAgreement = (e) => {
-        if (agreement) {
-            setAgreement(true);
-        } else {
-            setAgreement(false);
-        }
-    }
+    const onChangeAgreement = () => agreement ? setAgreement() : setAgreement();
 
     const onSubmit = useCallback((e) => {
         e.preventDefault();
@@ -93,11 +79,10 @@ const SignUpForm: React.FunctionComponent = () => {
                     required
                 />
                 {
-                    passwordCheck == '' ?
-                        ''
-                        : passwordError ?
-                            <div className="invalid">패스워드가 일치하지 않습니다.</div>
-                            : <div className="valid">패스워드가 일치 합니다.</div>
+                    passwordCheck == '' ? '' : password != passwordCheck
+                        ?
+                        <div className="invalid">패스워드가 일치하지 않습니다.</div>
+                        : <div className="valid">패스워드가 일치 합니다.</div>
                 }
                 <input id="agreement" type="checkbox" onChange={onChangeAgreement} required /><label htmlFor="agreement">약관 동의</label>
                 <div className="sign__buttons">

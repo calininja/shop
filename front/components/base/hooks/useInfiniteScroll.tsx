@@ -5,13 +5,12 @@ import { selectProducts } from 'selectors/product';
 import { loadProducts } from 'thunks';
 
 
-export default function useInfiniteScroll () {
+export default function useInfiniteScroll() {
     const dispatch = useDispatch();
     const countRef = useRef([]);
     const { products, hasMoreProduct, isLoadingPost } = useSelector(selectProducts());
-    
+
     useEffect(() => {
-        console.log('...');
         function onScroll() {
             if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
                 if (hasMoreProduct && !isLoadingPost) {

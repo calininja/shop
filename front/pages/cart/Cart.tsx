@@ -21,12 +21,10 @@ const Cart: React.FunctionComponent = () => {
 
     const amount = useCallback(() => {
         const arr = [];
-        for (let i = 0; i < orders?.length; i++) {
-            const vol = orders[i].quantity;
-            if (itemCheck.includes(orders[i].id)) {
-                arr.push(orders[i].products.price * vol);
-            }
-        };
+        orders.forEach((v, i) => {
+            const vol = v.quantity;
+            if (itemCheck.includes(v.id)) arr.push(v.products.price * vol);
+        })
         const result = arr.length > 0 && arr.reduce((acc, cur, i) => acc + cur);
         return arr.length > 0 ? result + 3000 : 0;
     }, [orders, itemCheck]);
@@ -38,11 +36,10 @@ const Cart: React.FunctionComponent = () => {
     const handleAllCheck = useCallback((checked) => {
         if (checked) {
             const idArray = [];
-            // 전체 체크 박스가 체크 되면 id를 가진 모든 elements를 배열에 넣어줌.
             orders.forEach((el) => idArray.push(el.id));
             setItemCheck(idArray);
             return
-        } else {// 반대의 경우 전체 체크 박스 체크 삭제
+        } else {
             setItemCheck([]);
         }
     }, [itemCheck, orders]);
@@ -50,7 +47,7 @@ const Cart: React.FunctionComponent = () => {
     const handleSingleCheck = useCallback((checked, id) => {
         if (checked) {
             setItemCheck([...itemCheck, id]);
-        } else {// 체크 해제
+        } else {
             setItemCheck(itemCheck.filter((el) => el !== id));
         }
     }, [itemCheck]);
@@ -84,8 +81,8 @@ const Cart: React.FunctionComponent = () => {
                             pathname: itemCheck.length >= 1 ? '/order' : '',
                             query: itemCheck.length >= 1 ? {
                                 user: me ? me.signinId : 'anonymous',
-                                getPrice: JSON.stringify(amount()),
-                                point: Number((amount()) * 0.05) * 0.05
+                                getPrice: amount(),
+                                point: Math.ceil((amount()) * 0.05)
                             } : ''
                         }}
                     >
