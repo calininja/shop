@@ -2,9 +2,10 @@ import Slick from '../../common/Slick';
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
+import { IProductState } from 'types/product';
 
 interface IProductImageProps {
-    product: any;
+    product: IProductState;
 }
 
 const ProductImage: React.FunctionComponent<IProductImageProps> = ({

@@ -11,6 +11,9 @@ import { User } from 'types/user';
 import { IProductState } from 'types/product';
 import { IOrderState } from 'types/order';
 import { IReviewState } from 'types/review';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
+
 
 interface IDetailPresenterProps {
     obj: {
@@ -108,5 +111,6 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
         </>
     );
 };
+
 
 export default DetailPresenter;
