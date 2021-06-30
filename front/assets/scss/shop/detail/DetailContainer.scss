@@ -195,16 +195,16 @@
                 }
             }
         }
-        .product-description__container{
+        .product-description{
             width: 100%;
-            .product-description{
+            .product-description__body{
                 font: 400 14px/25px $noto;
                 color: #000000;
                 margin: 20px 0 40px;
                 white-space: pre-line;
             }
         }
-        .product-review__container{
+        .product-preview{
             .product__head{
                 cursor: pointer;
             }

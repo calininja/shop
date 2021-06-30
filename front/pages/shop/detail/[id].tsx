@@ -1,39 +1,26 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import wrapper from 'store';
 import { useRouter } from 'next/router';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
-import { loadProduct, loadProducts, loadReviews } from 'thunks/products';
+import { loadProduct, loadProducts } from 'thunks/products';
 import { loadUser } from "thunks/users";
+import axios from 'axios';
+import wrapper from 'store';
+import DetailTemplate from '../../../components/shop/Detail/DetailTemplate';
 import DetailContainer from '../../../components/shop/Detail/DetailContainer';
-import { selectOrders } from 'selectors/order';
 
 const detail: React.FunctionComponent = ({ }) => {
-  const dispatch = useDispatch();
 
   const router = useRouter();
   const { id }: any = router.query;
   const { product } = useSelector(selectProducts());
-  const { isLoadingCart } = useSelector(selectOrders());
-
-  useEffect(() => {
-    dispatch(loadReviews(obj));
-  }, [isLoadingCart])
-
-  const obj = {
-    id: product?.id,
-    offset: null
-  }
 
   return (
     <div>
-      {
-        product ?
-          <DetailContainer obj={obj} /> : ''
-      }
+      <DetailTemplate>
+        {product ? <DetailContainer /> : ''}
+      </DetailTemplate>
     </div>
   );
 };

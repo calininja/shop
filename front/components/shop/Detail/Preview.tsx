@@ -5,10 +5,14 @@ import { selectUsers } from 'selectors/user';
 import { useSelector, useDispatch } from 'react-redux';
 import { showModal } from 'slices/cores';
 import { loadReviews } from 'thunks';
+import { IReviewState } from 'types/review';
 
 interface IPreviewsProps {
-    reviews: any;
-    obj: any;
+    reviews: IReviewState[],
+    obj: {
+        id: number,
+        offset: null
+    }
 }
 
 const Preview: React.FunctionComponent<IPreviewsProps> = ({

@@ -10,10 +10,11 @@
             margin-bottom: 20px;
             text-align: center;
         }
-        span{
-            font: 400 14px/14px $noto;
-            color: #999;
-        }
+    }
+    >h3{
+        font: 400 14px/14px $noto;
+        color: #999;
+        text-align: center
     }
     @include after();
     .cart__main{

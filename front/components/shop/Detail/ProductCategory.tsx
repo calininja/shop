@@ -8,12 +8,11 @@ interface IProductCategoryProps {
     products: any;
 }
 
-const ProductCategory: React.FunctionComponent<IProductCategoryProps> = ({ 
+const ProductCategory: React.FunctionComponent<IProductCategoryProps> = ({
     products
- }) => {
+}) => {
 
     const { product } = useSelector(selectProducts());
-    const [activeColor, setActiveColor] = useState(null);
 
     return (
         <>

@@ -1,66 +1,65 @@
 import * as React from 'react';
-import Link from 'next/link';
-import { backUrl } from '../../config/config';
+import { useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectOrders } from 'selectors/order';
+import { selectUsers } from 'selectors/user';
+import { deleteCartItem } from 'thunks';
+import CartPresenter from './CartPresenter';
 
-interface ICartProps {
-    orders: any;
-    removeItem: (val: string) => void;
-    handleAllCheck: (e) => void;
-    handleSingleCheck: (checked: boolean, id: number) => void;
-    itemCheck: number[];
+interface ICartContainerProps {
 }
 
-const CartContainer: React.FunctionComponent<ICartProps> = ({
-    orders,
-    removeItem,
-    handleAllCheck,
-    handleSingleCheck,
-    itemCheck,
+const CartContainer: React.FunctionComponent<ICartContainerProps> = ({
 }) => {
+
+    const dispatch = useDispatch();
+    const { me } = useSelector(selectUsers());
+    const { orders } = useSelector(selectOrders());
+    const [itemCheck, setItemCheck] = useState([]);
+
+    const amount = useCallback(() => {
+        const arr = [];
+        orders.forEach((v, i) => {
+            if (itemCheck.includes(v.id)) arr.push(v.products.price * v.quantity);
+        })
+        const result = arr.length > 0 && arr.reduce((acc, cur, i) => acc + cur);
+        return arr.length > 0 ? result + 3000 : 0;
+    }, [orders, itemCheck]);
+
+    const removeItem = useCallback((val) => {
+        dispatch(deleteCartItem(val));
+    }, [me]);
+
+    const handleAllCheck = useCallback((checked) => {
+        if (checked) {
+            const idArray = [];
+            orders.forEach((el) => idArray.push(el.id));
+            setItemCheck(idArray);
+            return
+        } else {
+            setItemCheck([]);
+        }
+    }, [itemCheck, orders]);
+
+    const handleSingleCheck = useCallback((checked, id) => {
+        if (checked) {
+            setItemCheck([...itemCheck, id]);
+        } else {
+            setItemCheck(itemCheck.filter((el) => el !== id));
+        }
+    }, [itemCheck]);
 
     return (
         <>
-            <div className="cart__check-all">
-                <input type="checkbox" name="group" id="checkAll"
-                    checked={
-                        itemCheck.length === orders.length
-                            ? true
-                            : false
-                    }
-                    onChange={(e) => { handleAllCheck(e.target.checked) }}
-                />
-                <label htmlFor="checkAll">전체 선택</label>
-            </div>
-            {
-                orders.map((v, i) => {
-                    const id = v.products.id;
-                    return (
-                        <div key={i} className="cart__item">
-                            <input type="checkbox" name="item" className="item"
-                                checked={itemCheck.includes(v.id) ? true : false}
-                                onChange={(e) => { handleSingleCheck(e.target.checked, v.id) }}
-                            />
-                            <div className="cart__item__inner">
-                                <Link
-                                    href={'/shop/detail/[id]'}
-                                    as={`/shop/detail/${id}`}
-                                >
-                                    <a>
-                                        <img src={`${backUrl}/${v.images.src}`} alt="" className="cart-image" />
-                                    </a>
-                                </Link>
-                                <div className="cart__item__title"><h3>{v.products.title}</h3></div>
-                                <div>상품 번호: {v.products.id}</div>
-                                <div>사이즈: {v.size.toUpperCase()}</div>
-                                <div>색상: <span className="color" style={{ background: v.color }}></span></div>
-                                <div>수량: {v.quantity}</div>
-                                <div>가격: {v.products.price.toLocaleString()} 원</div>
-                            </div>
-                            <div className="cart-delete" onClick={() => { removeItem(v.id) }}>삭제</div>
-                        </div>
-                    )
-                })
-            }
+            <CartPresenter
+                me={me}
+                orders={orders}
+                amount={amount}
+                removeItem={removeItem}
+                handleAllCheck={handleAllCheck}
+                handleSingleCheck={handleSingleCheck}
+                itemCheck={itemCheck}
+            />
         </>
     )
 };

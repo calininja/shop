@@ -3,30 +3,18 @@ import { connect, useSelector } from 'react-redux';
 import wrapper from 'store';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import ListContainer from '../../../components/shop/ListContainer';
 import { loadUser } from "thunks/users";
 import { loadProducts } from 'thunks/products';
-import { selectProducts } from 'selectors/product';
 import { loadCart } from 'thunks/orders';
+import ListContainer from '../../../components/shop/ListContainer';
+import ListTemplate from '../../../components/shop/ListTemplate';
 
 const CategoryAll: React.FunctionComponent = () => {
 
-    const { products } = useSelector(selectProducts());
-
     return (
-        <section className="shop__container">
-            <div className="shop__wrapper">
-                {
-                    products.map((v, i) => {
-                        return (
-                            <div className="wrap" key={v.id}>
-                                <ListContainer post={v} posts={products} />
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        </section>
+        <ListTemplate>
+            <ListContainer />
+        </ListTemplate>
     );
 };
 

@@ -1,17 +1,15 @@
 import * as React from 'react';
-import { useCallback } from 'react';
-import Rating from 'components/common/Rating';
-import { selectUsers } from 'selectors/user';
-import { useSelector, useDispatch } from 'react-redux';
-import { showModal } from 'slices/cores';
-import { loadReviews } from 'thunks';
+import { IReviewState } from 'types/review';
 import Preview from './Preview';
 
 interface IPreviewContainerProps {
-    obj: any;
-    preview: any;
-    reviews: any;
-    allReviews: any;
+    obj: {
+        id: number,
+        offset: null
+    }
+    reviews: IReviewState[]
+    allReviews: number;
+    preview: boolean;
     onClickPreview: () => void;
 }
 
@@ -24,7 +22,7 @@ const PreviewContainer: React.FunctionComponent<IPreviewContainerProps> = ({
 }) => {
 
     return (
-        <div className="product-review__container">
+        <div className="product-preview">
             <span className="product__head" onClick={onClickPreview}>리뷰({allReviews ? allReviews : '0'})</span>
             {preview ?
                 <Preview

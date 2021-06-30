@@ -1,23 +1,23 @@
 import * as React from 'react';
-import Link from 'next/link';
-import { backUrl } from 'config/config';
+import { useSelector } from 'react-redux';
+import { selectProducts } from 'selectors/product';
+import ListPresenter from './ListPresenter';
 
-interface IPostProps {
-    post: any;
-    posts: any;
+interface IListContainerProps {
 }
 
-const ListContainer: React.FunctionComponent<IPostProps> = ({ post, posts }) => {
+const ListContainer: React.FunctionComponent<IListContainerProps> = ({
+}) => {
 
-    const postId = post.id;
+    const { products } = useSelector(selectProducts());
 
     function colorCount(name) {
         let arr = [];
         let count = 0;
-        for (let i = 0; i < posts.length; i++) {
-            arr.push(posts[i]);
+        for (let i = 0; i < products.length; i++) {
+            arr.push(products[i]);
         }
-        for (let i = 0; i < posts.length; i++) {
+        for (let i = 0; i < products.length; i++) {
             if (arr[i].title === name) {
                 count++;
             }
@@ -26,38 +26,18 @@ const ListContainer: React.FunctionComponent<IPostProps> = ({ post, posts }) => 
     }
 
     return (
-        <section className="list__container">
-            <Link
-                href={'/shop/detail/[postId]'}
-                as={`/shop/detail/${postId}`}
-                key={postId}
-            >
-                <a>
-                    {post.images && post.images[0] ?
-                        <img src={`${backUrl}/${post.images[0].src}`} className="list-image" alt="이미지" />
-                        :
-                        ''
-                    }
-                    <div className="list__description">
-                        <div className="list__wrapper">
-                            <p className="list__title">
-                                {post.title}
-                            </p>
-                            <p className="list__price">
-                                {post.price ? post.price.toLocaleString() : ''} 원
-                            </p>
-                        </div>
-                        <div className="list__categories">
-                            <span>{post.categories.name}</span>
-                        </div>
-                        <div className="list__options">
-                            <span>
-                                {colorCount(post.title)}
-                                컬러</span>
-                        </div>
-                    </div>
-                </a>
-            </Link>
+        <section className="shop__container">
+            <div className="shop__wrapper">
+                {
+                    products.map((v, i) => {
+                        return (
+                            <div className="wrap" key={v.id}>
+                                <ListPresenter postId={v.id} post={v} colorCount={colorCount} />
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </section>
     );
 };

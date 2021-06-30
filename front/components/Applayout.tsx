@@ -1,8 +1,8 @@
 import * as React from 'react';
 import useDarkmode from './base/hooks/useDarkmode';
 import CategoryMenu from './CategoryMenu';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './common/Footer';
+import Header from './common/Header';
 
 interface IPageProps {
     pagePath: string;

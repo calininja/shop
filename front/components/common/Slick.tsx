@@ -23,7 +23,7 @@ const Slick: React.FunctionComponent<IImagesProps> = ({ image }) => {
         slidesToShow: 1,
         slidesToScroll: 1,
     };
-    
+
     return (
         <section className="slick__container">
             <Slider {...settings}>
