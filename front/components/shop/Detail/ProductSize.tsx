@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import media from 'lib/styles/media';
+import { after, font } from 'lib/styles/common';
 
 interface IProductSize {
     onClickSize: (v: string | object) => void;
@@ -48,17 +50,13 @@ const ProductSize: React.FunctionComponent<IProductSize> = ({
 };
 
 const productSize = css`
-    &::after{
-        display: block;
-        clear: both;
-        content: '';
-    }
+   ${after()}
     li{
         float: left;
         width: calc(20% - 15px);
         padding: 15px 0;
         margin: 3px 2.5px;
-        font: 500 15px/15px 'Noto Sans KR';
+        font: 500 15px/15px ${font.noto};
         color: #000000;
         text-transform: uppercase;
         border: 1px solid #ccc;
@@ -71,21 +69,9 @@ const productSize = css`
             position: relative;
             background: #000000;
             color: #ffffff;
-            &::after{
-                display: block;
-                clear: both;
-                content:'';
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                border-bottom: 2px solid #000000;
-                box-sizing: border;
-            }
         }
     }
-    @media(max-device-width: 414px) {
+    ${media.large} {
         width: 100%;
         min-width: unset;
         li{

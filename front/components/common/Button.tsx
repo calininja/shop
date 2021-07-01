@@ -1,6 +1,7 @@
 import * as React from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { font } from 'lib/styles/common';
 
 type ButtonProps =
     React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -24,7 +25,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
 };
 
 export const customButton = css`
-    font: 400 14px/14px 'Noto Sans KR', sans-serif;
+    font: 400 14px/14px ${font.noto};
     width: 150px;
     height: 32px;
     outline: 0;

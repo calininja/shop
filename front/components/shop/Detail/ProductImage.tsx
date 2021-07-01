@@ -3,6 +3,7 @@ import * as React from 'react';
 import { IProductState } from 'types/product';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import media from 'lib/styles/media';
 
 interface IProductImageProps {
     product: IProductState;
@@ -26,7 +27,7 @@ const productImage = css`
     img{
         width: 100%;
     }
-    @media (max-device-width: 414px) {
+    ${media.large} {
         float: none;
         width: 100%;
     }

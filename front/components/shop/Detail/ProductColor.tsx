@@ -5,6 +5,8 @@ import { selectProducts } from 'selectors/product';
 import Link from 'next/link';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import media from 'lib/styles/media';
+import { after, font } from 'lib/styles/common';
 
 interface IProductColorProps {
     products: any;
@@ -53,18 +55,13 @@ const ProductColor: React.FunctionComponent<IProductColorProps> = ({
 };
 
 const productColor = css`
-    &::after{
-        display: block;
-        clear: both;
-        content: '';
-    }
+    ${after()}
     min-width: 350px;
     li{
         float: left;
         width: calc(15% - 15px);
         padding: 10px 0;
         margin: 0 2.5px;
-        font: 400 16px/16px $noto;
         color: #000000;
         text-transform: uppercase;
         border: 1px solid #ffffff;
@@ -78,20 +75,17 @@ const productColor = css`
         &.active{
             position: relative;
             border: 1px solid #000000;
-            &::after{
-                display: block;
-                clear: both;
-                content:'';
-                position: absolute;
+            ${after(
+                `position: absolute;
                 left: 0;
                 right: 0;
                 bottom: 0;
                 width: 100%;
                 border-bottom: 2px solid #000000;
-                box-sizing: border;
-            }
+                box-sizing: border;`
+            )}
         }
-        @media(max-device-width: 414px){
+        ${media.large}{
             width: calc(20% - 15px);
         }
     }

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { IProductState } from 'types/product';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { font } from 'lib/styles/common';
 
 interface IProductCategoryProps {
     product: IProductState;
@@ -40,12 +41,12 @@ const ProductCategoryTitle: React.FunctionComponent<IProductCategoryProps> = ({
 
 const productCategory = css`
     display: block;
-    font: 300 16px/16px 'Noto Sans KR';
+    font: 300 16px/16px ${font.noto};
     color: #000000;
     margin-bottom: 15px;
 `
 const productTitle = css`
-    font: 500 28px/28px 'Noto Sans KR';
+    font: 500 28px/28px ${font.noto};
     color: #111111;
     margin: 0 0 30px 0;
 `

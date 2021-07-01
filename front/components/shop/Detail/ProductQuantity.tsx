@@ -1,6 +1,7 @@
 import * as React from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { after, font } from 'lib/styles/common';
 
 interface IProductQuantityProps {
     quantity: any;
@@ -39,7 +40,7 @@ const ProductQuantity: React.FunctionComponent<IProductQuantityProps> = ({
 
 const productQuantity = css`
     &.exceeded{
-        &::after{
+        ${after()}{
             display: block;
             content: '10개까지 구매 가능합니다.';
             clear: both;
@@ -67,7 +68,7 @@ const productQuantity = css`
             height: 20px;
             border: none;
             background: none;
-            font: 300 25px/25px $noto;
+            font: 300 25px/25px ${font.noto};
             color: #111111;
             padding: 10px;
             text-align: center;

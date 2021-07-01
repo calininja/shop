@@ -1,6 +1,7 @@
 import * as React from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { font } from 'lib/styles/common';
 
 type InputProps = React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
@@ -46,7 +47,7 @@ const labelInput = css`
     input{
         width: 100%;
         &.custom-input{
-            font: 300 13px/13px 'Noto Sans KR', sans-serif;
+            font: 300 13px/13px ${font.noto};
             text-indent: 10px;
             height: 32px;
             outline: 0;

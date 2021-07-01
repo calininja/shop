@@ -1,6 +1,6 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
-import handleError from "lib/handle-error";
-import hydrate from "lib/hydrate";
+import handleError from "lib/redux/handle-error";
+import hydrate from "lib/redux/hydrate";
 import {
  
 } from "thunks/users";

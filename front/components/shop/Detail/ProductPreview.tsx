@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUsers } from 'selectors/user';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import { font } from 'lib/styles/common';
 
 interface IPreviewContainerProps {
     obj: {}
@@ -94,7 +95,7 @@ const productPreviewWrapper = css`
     }
     .more-review, .add-review{
         display: inline-block;
-        font: 400 12px/12px 'Noto Sans KR';
+        font: 400 12px/12px ${font.noto};
         color: #000000;
         text-decoration: underline;
         padding: 0;
@@ -113,12 +114,12 @@ const productPreviewWrapper = css`
                     margin: 0 10px 0 20px;
                 }
                 .userId, .date{
-                    font: 400 12px/12px 'Noto Sans KR';
+                    font: 400 12px/12px ${font.noto};
                     color: #6d6d6d;
                 }
             }
             .preview__body{
-                font: 400 14px/18px 'Noto Sans KR';
+                font: 400 14px/18px ${font.noto};
                 color: #000000;
                 margin-top: 10px;
                 white-space: pre-line; 

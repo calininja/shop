@@ -1,6 +1,7 @@
 import * as React from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import media from 'lib/styles/media';
 
 
 const DetailTemplate: React.FunctionComponent = ({
@@ -26,7 +27,7 @@ const detailContainer = css`
     button{
         cursor: pointer;
     }
-    @media(max-device-width: 414px){
+    ${media.large}{
         padding: 1rem;
         min-height: unset;
     }

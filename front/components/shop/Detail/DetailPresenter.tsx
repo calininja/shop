@@ -13,6 +13,8 @@ import { IOrderState } from 'types/order';
 import { IReviewState } from 'types/review';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
+import media from 'lib/styles/media';
+import { font } from 'lib/styles/common';
 
 export interface IDetailPresenterProps {
     obj: any;
@@ -117,7 +119,7 @@ const productInformationWrapper = css`
     .product__head{
         display: block;
         width: 100%;
-        font: 500 16px/16px 'Noto Sans KR';
+        font: 500 16px/16px ${font.noto};
         color: #000000;
         margin: 10px 0;
         padding: 20px 0;
@@ -127,7 +129,7 @@ const productInformationWrapper = css`
             border-top: 0;
         }
     }
-    @media(max-device-width: 414px){
+    ${media.large}{
         float: none;
         width: 100%;
         padding-left: 0;
@@ -136,7 +138,7 @@ const productInformationWrapper = css`
 const productPrice = css`
     margin: 1rem 0;
     span{
-        font: 400 25px/25px Noto Sans KR;
+        font: 400 25px/25px ${font.noto};
     }
 `
 const productCart = css`
@@ -144,7 +146,7 @@ const productCart = css`
     max-width: 300px;
     background: #111111;
     border: 0;
-    font: 400 16px/55px 'Noto Sans KR';
+    font: 400 16px/55px ${font.noto};
     height: 55px;
     color: #ffffff;
     margin: 20px 0 10px;
@@ -156,7 +158,7 @@ const productCart = css`
 const productDescription = css`
     width: 100%;
     .product-description__body{
-        font: 400 14px/25px 'Noto Sans KR';
+        font: 400 14px/25px ${font.noto};
         color: #000000;
         margin: 20px 0 40px;
         white-space: pre-line;
