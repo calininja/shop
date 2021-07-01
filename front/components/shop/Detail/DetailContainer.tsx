@@ -12,7 +12,11 @@ import useToggle from 'lib/hooks/useToggle';
 import { toast } from 'react-toastify';
 import { loadReviews } from 'thunks';
 
-interface IDetailContainerProps {
+export interface IDetailContainerProps {
+    obj: {
+        id: number,
+        offset: number | null
+    }
 }
 
 const DetailContainer: React.FunctionComponent<IDetailContainerProps> = ({
@@ -57,7 +61,7 @@ const DetailContainer: React.FunctionComponent<IDetailContainerProps> = ({
     const increase = () => quantity < 10 && setQuantity(quantity + 1);
     const decrease = () => quantity > 1 && setQuantity(quantity - 1);
 
-    const onClickPreview = () => preview == true ? setPreview() : setPreview();
+    const onPreview = () => preview == true ? setPreview() : setPreview();
 
     const onSubmit = useCallback((e) => {
         e.preventDefault();
@@ -104,7 +108,7 @@ const DetailContainer: React.FunctionComponent<IDetailContainerProps> = ({
             onClickColor={onClickColor}
             increase={increase}
             decrease={decrease}
-            onClickPreview={onClickPreview}
+            onPreview={onPreview}
             onSubmit={onSubmit}
         />
     );

@@ -5,8 +5,8 @@ import ProductColor from './ProductColor';
 import CartPopup from '../../cart/CartPopup';
 import ViewedProduct from '../../common/ViewedProduct';
 import ProductQuantity from './ProductQuantity';
-import ProductCategory from './ProductCategory';
-import PreviewContainer from './PreviewContainer';
+import ProductCategoryTitle from './ProductCategoryTitle';
+import ProductPreview from './ProductPreview';
 import { User } from 'types/user';
 import { IProductState } from 'types/product';
 import { IOrderState } from 'types/order';
@@ -14,12 +14,8 @@ import { IReviewState } from 'types/review';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/react';
 
-
-interface IDetailPresenterProps {
-    obj: {
-        id: number,
-        offset: null
-    }
+export interface IDetailPresenterProps {
+    obj: any;
     me: User;
     product: IProductState;
     products: IProductState[];
@@ -34,7 +30,7 @@ interface IDetailPresenterProps {
     onClickColor: (v) => void;
     increase: () => void;
     decrease: () => void;
-    onClickPreview: () => void;
+    onPreview: () => void;
     onSubmit: (e) => void;
 }
 
@@ -54,8 +50,8 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
     onClickColor,
     increase,
     decrease,
-    onClickPreview,
-    onSubmit
+    onPreview,
+    onSubmit,
 }) => {
 
     return (
@@ -63,14 +59,12 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
             <ProductImage
                 product={product}
             />
-            <div className="product-information">
+            <div css={productInformationWrapper}>
                 <form action="" onSubmit={onSubmit}>
-                    <ProductCategory
+                    <ProductCategoryTitle
+                        product={product}
                         products={products}
                     />
-                    <h2 className="product__title">
-                        {product?.title}
-                    </h2>
                     <ProductColor
                         products={products}
                         onClickColor={onClickColor}
@@ -83,27 +77,25 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
                         increase={increase}
                         decrease={decrease}
                     />
-                    <div className="product__price">
+                    <div css={productPrice}>
                         <span>{product ? product.price.toLocaleString() : ''}</span> 원
                     </div>
-                    <div className="product-submenu">
-                        <button className="product-cart" type="submit">
-                            장바구니
-                        </button>
-                    </div>
+                    <button css={productCart} type="submit">
+                        장바구니
+                    </button>
                 </form>
-                <div className="product-description">
+                <div css={productDescription}>
                     <span className="product__head">상세설명</span>
                     <pre>
                         <p className="product-description__body">{product?.content}</p>
                     </pre>
                 </div>
-                <PreviewContainer
+                <ProductPreview
                     obj={obj}
                     preview={preview}
                     reviews={reviews}
                     allReviews={allReviews}
-                    onClickPreview={onClickPreview}
+                    onPreview={onPreview}
                 />
             </div>
             {viewedProducts && <ViewedProduct viewedProducts={viewedProducts} />}
@@ -112,5 +104,63 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
     );
 };
 
+const productInformationWrapper = css`
+    display: inline-block;
+    width: calc(35% - 50px);
+    padding: 20px 0 20px 50px;
+    vertical-align: top;
+    ul[class*=options]{
+        min-width: 574px;
+        margin: 20px 0;
+        cursor: pointer;
+    }
+    .product__head{
+        display: block;
+        width: 100%;
+        font: 500 16px/16px 'Noto Sans KR';
+        color: #000000;
+        margin: 10px 0;
+        padding: 20px 0;
+        border-top: 1px solid #cccccc;
+        text-align: left;
+        &.border-none{
+            border-top: 0;
+        }
+    }
+    @media(max-device-width: 414px){
+        float: none;
+        width: 100%;
+        padding-left: 0;
+    }
+`
+const productPrice = css`
+    margin: 1rem 0;
+    span{
+        font: 400 25px/25px Noto Sans KR;
+    }
+`
+const productCart = css`
+    width: 70%;
+    max-width: 300px;
+    background: #111111;
+    border: 0;
+    font: 400 16px/55px 'Noto Sans KR';
+    height: 55px;
+    color: #ffffff;
+    margin: 20px 0 10px;
+    border-radius: 100px;
+    &:hover{
+        background: #202020;
+    }
+`
+const productDescription = css`
+    width: 100%;
+    .product-description__body{
+        font: 400 14px/25px 'Noto Sans KR';
+        color: #000000;
+        margin: 20px 0 40px;
+        white-space: pre-line;
+    }
+`
 
 export default DetailPresenter;

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Slider from "react-slick";
 import { backUrl } from '../../config/config';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
 
 interface IImagesProps {
     image: any;
@@ -25,7 +27,7 @@ const Slick: React.FunctionComponent<IImagesProps> = ({ image }) => {
     };
 
     return (
-        <section className="slick__container">
+        <div css={slick}>
             <Slider {...settings}>
                 {
                     image && image.length > 1 ?
@@ -38,8 +40,31 @@ const Slick: React.FunctionComponent<IImagesProps> = ({ image }) => {
                         <img src={`${backUrl}/${image[0].src}`} alt="이미지" />
                 }
             </Slider>
-        </section>
+        </div>
     );
 };
-
+const slick = css`
+    img{
+        width: 100%;
+    }
+    .slick-dots li{
+        border: 1px solid #cccccc;
+        box-sizing: border-box;
+    }
+    .slick-list{
+        .slick-track{
+            .slick-slide{
+            }
+        }
+    }
+    .slick-dots{
+        position: relative;
+        bottom: 0;
+        margin: 10px 0;
+        li{
+            width: 70px;
+            height: 70px;
+        }
+    }
+`
 export default Slick;

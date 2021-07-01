@@ -2,22 +2,24 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/react';
 
 interface IProductSize {
     onClickSize: (v: string | object) => void;
 }
 
-const ProductSize: React.FunctionComponent<IProductSize> = ({ 
+const ProductSize: React.FunctionComponent<IProductSize> = ({
     onClickSize
- }) => {
+}) => {
 
     const { product } = useSelector(selectProducts());
     const [activeSize, setActiveSize] = useState(null);
 
     return (
         <>
-            <span className="product__head border-none">사이즈 선택</span>
-            <ul className="product-size product-options">
+            <ul css={productSize}>
+                <span className="product__head border-none">사이즈 선택</span>
                 {
                     product.sizes.length > 1 ?
                         product.sizes.map((v, i) => {
@@ -44,5 +46,52 @@ const ProductSize: React.FunctionComponent<IProductSize> = ({
         </>
     );
 };
+
+const productSize = css`
+    &::after{
+        display: block;
+        clear: both;
+        content: '';
+    }
+    li{
+        float: left;
+        width: calc(20% - 15px);
+        padding: 15px 0;
+        margin: 3px 2.5px;
+        font: 500 15px/15px 'Noto Sans KR';
+        color: #000000;
+        text-transform: uppercase;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        &:hover{
+            border: 1px solid #000000;
+        }
+        &.active{
+            position: relative;
+            background: #000000;
+            color: #ffffff;
+            &::after{
+                display: block;
+                clear: both;
+                content:'';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                border-bottom: 2px solid #000000;
+                box-sizing: border;
+            }
+        }
+    }
+    @media(max-device-width: 414px) {
+        width: 100%;
+        min-width: unset;
+        li{
+            width: calc(33.3% - 15px);
+        }
+    }
+`
 
 export default ProductSize;
