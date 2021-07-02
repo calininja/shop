@@ -6,6 +6,7 @@ import { connect, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { loadUser } from 'thunks';
 import { selectUsers } from 'selectors/user';
+import { css } from '@emotion/react';
 
 const UserInfo = () => {
 
@@ -16,7 +17,7 @@ const UserInfo = () => {
     }
 
     return (
-        <section className="user-info__container" style={css}>
+        <section css={userInfoContainer} style={css}>
             {me?.signinId == "admin" ?
                 <div className="admin-menu">
                     <Link href="/admin/PostForm"><a><button>등록</button></a></Link>
@@ -27,6 +28,14 @@ const UserInfo = () => {
         </section>
     );
 };
+
+const userInfoContainer = css`
+    position: relatvie;
+    padding: 100px 0 0';
+    .admin-menu{
+        text-align: center;
+    }
+`
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context: any) => {
     const state = await context.store.getState();

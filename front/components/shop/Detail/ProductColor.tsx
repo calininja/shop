@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
 import Link from 'next/link';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 import { after, font } from 'lib/styles/common';
 
@@ -76,14 +75,14 @@ const productColor = css`
             position: relative;
             border: 1px solid #000000;
             ${after(
-                `position: absolute;
+    `position: absolute;
                 left: 0;
                 right: 0;
                 bottom: 0;
                 width: 100%;
                 border-bottom: 2px solid #000000;
                 box-sizing: border;`
-            )}
+)}
         }
         ${media.large}{
             width: calc(20% - 15px);

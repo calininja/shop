@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { css } from '@emotion/react';
 
 interface IStarprops {
     rate: (star: number) => void | null;
@@ -11,7 +12,7 @@ const Rating: React.FunctionComponent<IStarprops> = ({
 }) => {
 
     return (
-        <div className="star__container">
+        <div css={ratingWrapper}>
             {
                 [1, 2, 3, 4, 5].map((v) => {
                     return (
@@ -29,5 +30,16 @@ const Rating: React.FunctionComponent<IStarprops> = ({
         </div>
     );
 };
+
+const ratingWrapper = css`
+    >div{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        img{
+            width: 100%;
+        }
+    }
+`
 
 export default Rating;

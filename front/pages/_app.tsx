@@ -5,7 +5,6 @@ import Helmet from "react-helmet";
 import wrapper from "store";
 import Applayout from "../components/Applayout";
 import Core from 'components/base/Core';
-import '../assets/scss/index.scss';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
 
@@ -137,6 +136,29 @@ ${emotionReset}
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+
+  :root{
+      --background1: #ffffff;
+      --background2: #ffffff;
+      --color1: #000000;
+      --revert: #ffffff;
+  }
+  :root[color-theme='light'] {
+      --background: #ffffff;
+      --color1: #000000;
+  }
+  :root[color-theme='dark'] {
+      --background: rgba(0,0,0,0.8);
+      --color1: #ffffff;
+      --color2: #f5f5f7;
+  }
+  .darkmode{
+      --background1: rgba(0,0,0,0.8);
+      --background2: #2d3134;
+      --color1: #ffffff;
+      --color2: #f5f5f7;
+      --revert: #000000;
   }
 `
 export default wrapper.withRedux(App);

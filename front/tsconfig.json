@@ -6,7 +6,9 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["@emotion/react/types/css-prop"],
+    "types": [
+      "@emotion/react/types/css-prop"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -19,6 +21,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "jsxImportSource": "@emotion/react"
   },
   "include": [
     "next-env.d.ts",

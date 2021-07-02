@@ -10,6 +10,10 @@ import Coupon from 'components/order/Coupon';
 import useInputs from 'lib/hooks/useInputs';
 import Link from 'next/link';
 import LabelInput from 'components/common/LabelInput';
+import { css } from '@emotion/react';
+import { font } from 'lib/styles/common';
+import media from 'lib/styles/media';
+import Button from 'components/common/Button';
 
 
 const Order: React.FunctionComponent = () => {
@@ -84,7 +88,7 @@ const Order: React.FunctionComponent = () => {
     ]
 
     return (
-        <section className="order__container">
+        <section css={orderContainer}>
             <h2>주문서 작성</h2>
             <LabelInput
                 label="이름"
@@ -164,12 +168,168 @@ const Order: React.FunctionComponent = () => {
                 }}
             >
                 <a>
-                    <button className="custom-button" onClick={onClickOrder}>결제하기</button>
+                    <Button onClick={onClickOrder}>결제하기</Button>
                 </a>
             </Link>
         </section>
     );
 };
+
+const orderContainer = css`
+    max-width: 410px;
+    margin: 3rem auto 0 auto;
+    h2{
+        text-align: center;
+        font: 500 28px/28px ${font.noto};
+        color: #111111;
+        margin-bottom: 50px;
+    }
+    .label-input__block{
+        margin: 5px 0;
+        >label, >input{
+            display: inline-block;
+        }
+        >label{
+            font: 300 13px/13px ${font.noto};
+        color: #111111;
+            width: 20%;
+        }
+        >input{
+            width: 80%;
+        }
+    }
+    >div{
+        .table{
+            display: inline-block;
+            width: 20%;
+            height: 100%;
+        }
+        button{
+            border: 0;
+            padding: 10px 10px;
+            border-radius: 1px;
+            font: 400 13px/13px "Noto Sans KR";
+            color: #111111;
+            vertical-align: middle;
+        }
+    }
+
+    .order__get-price{
+        >div{
+            >em{
+                font: 300 12px/12px ${font.noto};
+                color: #06c;
+            }
+        }
+        .order__coupon-box{
+            height: auto;
+            min-height: 160px;
+            margin: 20px 0;
+            button{
+                background: none;
+                width: 100%;
+                text-align: left;
+                border: 1px solid #cccccc;
+                padding: 0 20px;
+                font: 400 13px/40px ${font.noto};
+                color: #111111;
+            }
+        }
+        .order__total-price{
+            ul{
+                li{
+                    position: relative;
+                    display: inline-block;
+                    min-width: 400px;
+                    text-align: right;
+                    min-height: 25px;
+                    >div{
+                        position: absolute;
+                        bottom: 0;
+                    }
+                    >div:not(:last-child){
+                        left: 0;
+                        font: 400 13px/13px ${font.noto};
+                        color: #111111;
+                    }
+                    span, em{
+                        display: inline-block;
+                        position: absolute;
+                        right: 25px;
+                        bottom: 0;
+                        font: 500 16px/16px ${font.noto};
+                        color: #111111;
+                        letter-spacing: 0.3px;
+                    }
+                    span{
+                    }
+                    em{
+                        color: #06c;   
+                    }
+                    >div:not(:first-child){
+                        right: 0;
+                    }
+                    ${media.large} {
+                        min-width: unset;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .order__point{
+            text-align: left;
+            padding: 15px 0;
+            border-top: 1px solid #cccccc;
+            border-bottom: 1px solid #cccccc;
+            span{
+                font: 400 13px/13px ${font.noto};
+                color: #111111;
+            }
+        }
+        .coupon-popup__container{
+            padding: 15px 0;
+            overflow-y: auto;
+            height: 100px;
+            .coupon-item{
+                line-height: 28px;
+                input{
+                    vertical-align: middle;
+                }
+                label{
+                    font: 400 13px/13px ${font.noto};
+                    color: #111111;
+                    margin-left: 3px;
+                    span, em{
+                        z-index: -1;
+                    }
+                }
+            }
+            &.coupon-popup__container::-webkit-scrollbar {
+                width: 2px;
+            }
+            &.coupon-popup__container::-webkit-scrollbar-thumb {
+                background: #cccccc;
+            }
+            &.coupon-popup__container::-webkit-scrollbar-track {
+                background: #ffffff;
+            }
+        }
+        ${media.large} {
+            .order__coupon-box{
+                button{
+                    width: 100%;
+                }
+            }   
+        }
+    }
+    .custom-button{
+        display: block;
+        margin: 50px 0 50px auto;
+    }
+    ${media.large} {
+        padding: 1rem;
+    }
+`
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context: any) => {
     const state = await context.store.getState();

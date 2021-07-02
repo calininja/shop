@@ -8,15 +8,13 @@ type InputProps = React.DetailedHTMLProps<
 >;
 
 export interface ILabelInputProps extends InputProps {
-    label: string;
     placeholder?: string;
     name?: string;
     value?: string;
     onChange?: React.ChangeEventHandler;
 }
 
-const LabelInput: React.FunctionComponent<ILabelInputProps> = ({
-    label,
+const Input: React.FunctionComponent<ILabelInputProps> = ({
     name,
     value,
     placeholder,
@@ -25,29 +23,19 @@ const LabelInput: React.FunctionComponent<ILabelInputProps> = ({
 }) => {
 
     return (
-        <div css={labelInput}>
-            <label htmlFor="">{label}</label>
-            <input
-                placeholder={placeholder}
-                className="custom-input"
-                name={name}
-                value={value}
-                onChange={onChange}
-                {...rest}
-            />
-        </div>
+        <input
+            css={input}
+            placeholder={placeholder}
+            className="custom-input"
+            name={name}
+            value={value}
+            onChange={onChange}
+            {...rest}
+        />
     );
 };
 
-const labelInput = css`
-    position: relative;
-    margin-bottom: 7px;
-    label{
-        display: block;
-        font: 300 13px/13px ${font.noto};
-        color: #111111;
-        margin-bottom: 7px;
-    }
+const input = css`
     input{
         width: 100%;
         &.custom-input{
@@ -72,4 +60,4 @@ const labelInput = css`
     }
 `
 
-export default LabelInput;
+export default Input;

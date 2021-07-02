@@ -2,8 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 import { after, font } from 'lib/styles/common';
 
@@ -19,33 +18,31 @@ const ProductSize: React.FunctionComponent<IProductSize> = ({
     const [activeSize, setActiveSize] = useState(null);
 
     return (
-        <>
-            <ul css={productSize}>
-                <span className="product__head border-none">사이즈 선택</span>
-                {
-                    product.sizes.length > 1 ?
-                        product.sizes.map((v, i) => {
-                            return (
-                                <li
-                                    className={activeSize == i ? 'active' : ''}
-                                    key={i}
-                                    onClick={() => { setActiveSize(i); onClickSize(v.size) }}
-                                >
-                                    {v.size}
-                                </li>
-                            )
-                        })
-                        :
-                        <li
-                            className={activeSize == 0 ? 'active' : ''}
-                            key={product.id}
-                            onClick={() => { setActiveSize(0); onClickSize(product.sizes[0].size) }}
-                        >
-                            {product.sizes[0].size}
-                        </li>
-                }
-            </ul>
-        </>
+        <ul css={productSize}>
+            <span className="product__head border-none">사이즈 선택</span>
+            {
+                product.sizes.length > 1 ?
+                    product.sizes.map((v, i) => {
+                        return (
+                            <li
+                                className={activeSize == i ? 'active' : ''}
+                                key={i}
+                                onClick={() => { setActiveSize(i); onClickSize(v.size) }}
+                            >
+                                {v.size}
+                            </li>
+                        )
+                    })
+                    :
+                    <li
+                        className={activeSize == 0 ? 'active' : ''}
+                        key={product.id}
+                        onClick={() => { setActiveSize(0); onClickSize(product.sizes[0].size) }}
+                    >
+                        {product.sizes[0].size}
+                    </li>
+            }
+        </ul>
     );
 };
 

@@ -50,17 +50,14 @@ const DetailContainer: React.FunctionComponent<IDetailContainerProps> = ({
         }
     }, [color, size, quantity, popData, isAddingCart]);
 
-
     useEffect(() => {
         dispatch(loadReviews(obj));
     }, [isLoadingCart])
 
     const onClickSize = (v) => setSize(v);
     const onClickColor = (v) => setColor(v);
-
     const increase = () => quantity < 10 && setQuantity(quantity + 1);
     const decrease = () => quantity > 1 && setQuantity(quantity - 1);
-
     const onPreview = () => preview == true ? setPreview() : setPreview();
 
     const onSubmit = useCallback((e) => {

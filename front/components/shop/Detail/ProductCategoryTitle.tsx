@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
 import Link from 'next/link';
 import { IProductState } from 'types/product';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
 
 interface IProductCategoryProps {
@@ -20,8 +19,8 @@ const ProductCategoryTitle: React.FunctionComponent<IProductCategoryProps> = ({
     const { product } = useSelector(selectProducts());
 
     return (
-        <>
-            <span css={productCategory}>
+        <div css={productCategoryTitleWrapper}>
+            <span className='product__category'>
                 {products?.map((v, i) => {
                     if (products[i].id == product.id) {
                         return (
@@ -32,23 +31,25 @@ const ProductCategoryTitle: React.FunctionComponent<IProductCategoryProps> = ({
                     }
                 })}
             </span>
-            <h2 css={productTitle}>
+            <h2 className='product__title'>
                 {product?.title}
             </h2>
-        </>
+        </div>
     );
 };
 
-const productCategory = css`
-    display: block;
-    font: 300 16px/16px ${font.noto};
-    color: #000000;
-    margin-bottom: 15px;
-`
-const productTitle = css`
-    font: 500 28px/28px ${font.noto};
-    color: #111111;
-    margin: 0 0 30px 0;
+const productCategoryTitleWrapper = css`
+    .product__category{
+        display: block;
+        font: 300 16px/16px ${font.noto};
+        color: #000000;
+        margin-bottom: 15px;
+    }
+    .product__title{
+        font: 500 28px/28px ${font.noto};
+        color: #111111;
+        margin: 0 0 30px 0;
+    }
 `
 
 export default ProductCategoryTitle;

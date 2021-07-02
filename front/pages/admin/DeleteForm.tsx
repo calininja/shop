@@ -10,6 +10,7 @@ import { deleteCategory, deleteProduct } from 'thunks/products';
 import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
+import { css } from '@emotion/react';
 
 const DeleteForm = () => {
 
@@ -24,7 +25,7 @@ const DeleteForm = () => {
     const onDeleteCategory = (e) => dispatch(deleteCategory(categoryId))
 
     return (
-        <div className="delete-form__container">
+        <div css={DeleteFormContainer}>
             <form onSubmit={onDeleteProduct}>
                 <LabelInput
                     label="id"
@@ -54,6 +55,25 @@ const DeleteForm = () => {
         </div>
     );
 };
+
+const DeleteFormContainer = css`
+    width: 400px;
+    margin: 50px auto 100px;
+    form{
+        display: flex;
+        margin: 10px 0;
+        label{
+            font-size: 0;
+        }
+        .custom-input{
+            width: 200px;
+        }
+        .custom-button{
+            width: 150px;
+            margin-left: 10px;
+        }
+    }
+`
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context: any) => {
     const state = await context.store.getState();

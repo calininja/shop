@@ -1,8 +1,7 @@
 import Slick from '../../common/Slick';
 import * as React from 'react';
 import { IProductState } from 'types/product';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 
 interface IProductImageProps {

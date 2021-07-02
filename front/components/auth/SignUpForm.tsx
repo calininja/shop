@@ -9,6 +9,8 @@ import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
 import { toast } from 'react-toastify';
+import { css } from '@emotion/react';
+import { after, font } from 'lib/styles/common';
 
 const SignUpForm: React.FunctionComponent = () => {
 
@@ -44,7 +46,7 @@ const SignUpForm: React.FunctionComponent = () => {
     }, [id, password, passwordCheck])
 
     return (
-        <div className="sign__container signup">
+        <section css={signUpFormWrapper}>
             <form onSubmit={onSubmit}>
                 <LabelInput
                     label="id"
@@ -88,17 +90,62 @@ const SignUpForm: React.FunctionComponent = () => {
                     </div>
                 </div>
             </form>
-        </div>
+        </section>
     );
 };
 
-export const getServerSideProps = async (context: any) => {
+const signUpFormWrapper = css`
+    position: relative;
+    width: 250px;
+    height: auto;
+    min-height: 200px;
+    margin: 0 auto;
+    padding: 50px 50px 100px;
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;
+    transition: all 0.5s ease-in;
+    z-index: 1;
+    form{
+        ${after()}
+        .label-input__block{
+            >input:not(for:agreement){
+                width: 100%;
+                margin: 1px 0;
+            }
 
-    return {
-        props: {
-            pathname: '/SignUpForm',
+            label{
+                font: 300 12px/15px ${font.noto};
+                vertical-align: middle;
+            }
+            button{
+                display: block;
+            }
         }
-    };
-}
+        .invalid{
+            font: 400 14px/30px ${font.noto};
+            color: red;
+        }
+        .valid{
+            font: 400 14px/30px ${font.noto};
+            color: green;
+        }
+        .sign__buttons{
+            position: absolute;
+            bottom: 30px;
+            button{
+                width: 200px;
+                margin: 10px 2px;
+            }
+            div{
+                font: 400 14px/14px ${font.noto};
+                color: #111111;
+                .toggle{
+                    font: 400 14px/14px ${font.noto};
+                    color: #249e6b;
+                    cursor: pointer;
+                }
+            }
+        }
+`
 
 export default SignUpForm;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useRef } from 'react';
+import { css } from '@emotion/react';
 
 interface IProgressProps {
     progress: any;
@@ -18,10 +19,21 @@ const ProgressBar: React.FunctionComponent<IProgressProps> = ({ progress }) => {
     }
 
     return (
-        <section className="progress-bar__container" ref={popupRef}>
+        <div css={progressBarWrapper} ref={popupRef}>
             <div style={!progress ? css3('none') : css3('all 1s linear')}></div>
-        </section>
+        </div>
     );
 };
+
+const progressBarWrapper = css`
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    div{
+        width: 1px;
+        height: 2px;
+        background: red;
+    }
+`
 
 export default ProgressBar;

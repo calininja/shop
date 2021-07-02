@@ -1,8 +1,7 @@
 import * as React from 'react';
 import Slider from "react-slick";
 import { backUrl } from '../../config/config';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 
 interface IImagesProps {
     image: any;

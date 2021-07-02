@@ -30,7 +30,7 @@ const AddressPopup: React.FunctionComponent<IAddressProps> = ({
 
     return (
         <>
-            <div className="table"></div>
+            {/* <div className="table"></div> */}
             <button type='button' onClick={openPostCode}>우편번호 검색</button>
             <LabelInput
                 label=""

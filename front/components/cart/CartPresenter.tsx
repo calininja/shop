@@ -2,6 +2,9 @@ import * as React from 'react';
 import Link from 'next/link';
 import Button from 'components/common/Button';
 import { backUrl } from '../../config/config';
+import { css } from '@emotion/react';
+import { after, font } from 'lib/styles/common';
+import media from 'lib/styles/media';
 
 interface ICartPresenterProps {
     me: any;
@@ -24,7 +27,7 @@ const CartPresenter: React.FunctionComponent<ICartPresenterProps> = ({
 }) => {
 
     return (
-        <>
+        <div css={CartPresenterWrapper}>
             <h3>{orders.length}개 상품</h3>
             <div className="cart__main">
                 <div className="cart__check-all">
@@ -86,7 +89,7 @@ const CartPresenter: React.FunctionComponent<ICartPresenterProps> = ({
                             } : ''
                         }}
                     >
-                        <Button type="submit">
+                        <Button type="submit" className='custom-button'>
                             <a>
                                 주문하기
                             </a>
@@ -94,9 +97,159 @@ const CartPresenter: React.FunctionComponent<ICartPresenterProps> = ({
                     </Link>
                 </div>
             </div>
-        </>
+        </div>
     )
 };
+
+const CartPresenterWrapper = css`
+    >h3{
+        font: 400 14px/14px ${font.noto};
+        color: #999;
+        text-align: center
+    }
+    ${after()}
+    .cart__main{
+        width: 70%;
+        margin: 0 auto;
+        float: left;
+        .cart__check-all{
+            border-top: 1px solid #e5e5e5;
+            margin: 30px 5px 0 0;
+            padding: 20px 30px 10px;
+            input{
+                margin-right: 5px;
+            }
+            label{
+                font: 400 14px/14px ${font.noto};
+                color: #111111;
+            }
+        }
+        .cart__item{
+            font: 400 14px/14px ${font.noto};
+            color: #111111;
+            border-top: 1px solid #e5e5e5;
+            padding: 18px 30px;
+            margin: 10px 0;
+            ${after()}
+            .cart__item__inner{
+                float: left;
+                width: 100%;
+                ${after()}
+                .cart-image{
+                    float: right;
+                    width: 100px;
+                    border: 1px solid #e5e5e5;
+                    z-index: 2;
+                }
+                .cart__item__title{
+                    h3{
+                        font: 500 16px/16px ${font.noto};
+                        margin: 10px 0 15px;
+                    }
+                }
+                >div:not(.cart__item__title){
+                    padding: 5px 0;
+                    font: 400 14px/14px ${font.noto};
+                    span.color{
+                        display: inline-block;
+                        width: 15px;
+                        height: 15px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+        .cart-delete{
+            float: right;
+            cursor: pointer;
+            font: 300 16px/16px ${font.noto};
+            color: #111111;
+            margin: 5px 0;
+        }
+        ${media.large} {
+            width: 100%;
+            min-width: unset;
+            float: none;
+            .cart__item{
+                .cart__item__inner{
+                    .cart-image{
+                        float: unset;
+                    }
+                }
+            }
+        }
+    }
+    .cart__side{
+        float: right;
+        position: relative;
+        top: 27px;
+        width: calc(30% - 32px);
+        margin: 0 auto;
+        margin-left: 30px;
+        border: 1px solid #e5e5e5;
+        white-space: pre-wrap;
+        h3{
+            font: 500 16px/16px ${font.noto};
+            color: #111111;
+            background-color: #e5e5e5;
+            padding: 20px 15px;
+        }
+        .cart__side__body{
+            padding: 20px;
+            ${after()}
+            .shipping-cost{
+                display: block;
+                font: 400 14px/14px ${font.noto};
+                color: #111111;
+                margin: 0 0 20px 0;
+                span{
+                    float: right;
+                    em{
+                        display: inline-block;
+                        font: 500 13px/13px ${font.noto};
+                    }
+                }
+                &.total-price{
+                    margin: 20px 0;
+                    span{
+                        em{
+                            font: 500 20px/20px ${font.noto};
+                        }
+                    }
+                }
+                &.point{
+                    span{
+                        em{
+                            font: 400 15px/15px ${font.noto};
+                            color: #06c;
+                        }
+                    }
+                }
+            }
+            .custom-button{
+                width: 100%;
+                height: 50px;
+                margin: 25px 0;
+                background-color: plum;
+                border:0;
+                border-radius: 0;
+                a{
+                    color: #ffffff;
+                    letter-spacing: 2px;
+                }
+                &:hover{
+                    background-color: rgb(220, 150, 220);
+                }
+            }
+        }
+        ${media.large} {
+            width: 100%;
+            top: 5%;
+            left: 0;
+            margin-left: 0;
+        }
+    }
+`
 
 
 export default CartPresenter;

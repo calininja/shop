@@ -6,8 +6,7 @@ import { showModal } from 'slices/cores';
 import { loadReviews } from 'thunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUsers } from 'selectors/user';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
 
 interface IPreviewContainerProps {

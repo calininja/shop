@@ -3,6 +3,8 @@ import useDarkmode from './base/hooks/useDarkmode';
 import CategoryMenu from './CategoryMenu';
 import Footer from './common/Footer';
 import Header from './common/Header';
+import { css } from '@emotion/react';
+import media from 'lib/styles/media';
 
 interface IPageProps {
     pagePath: string;
@@ -15,7 +17,7 @@ const Applayout: React.FunctionComponent<IPageProps> = ({
 }: IPageProps) => {
     const { dark, onClickDarkMode } = useDarkmode();
     return (
-        <>
+        <section css={appLayoutContainer}>
             <Header
                 pagePath={pagePath}
                 onClickDarkMode={onClickDarkMode}
@@ -38,8 +40,27 @@ const Applayout: React.FunctionComponent<IPageProps> = ({
                 </section>
             </main>
             <Footer />
-        </>
+        </section>
     );
 };
+
+const appLayoutContainer = css`
+    section{
+        position: relative;
+    }
+    main{
+        overflow: hidden;
+        .contents__container{
+            width: 90%;
+            min-width: 90%;
+            margin: 0 auto 150px;
+            ${media.large} {
+                width: 100%;
+                min-width: unset;
+                margin-top: 0;
+            }
+        }
+    }
+`
 
 export default Applayout;

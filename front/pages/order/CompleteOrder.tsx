@@ -6,11 +6,14 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import wrapper from "store";
 import { loadUser } from "thunks/users";
-import { loadCart, updateNonmemberCart } from 'thunks/orders';
+import { loadCart } from 'thunks/orders';
 import { deleteCartItemsAll } from 'thunks/orders';
 import { useDispatch } from 'react-redux';
 import { selectOrders } from 'selectors/order';
 import { selectUsers } from 'selectors/user';
+import { css } from '@emotion/react';
+import media from 'lib/styles/media';
+import { font } from 'lib/styles/common';
 
 const CompleteOrder: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -25,13 +28,10 @@ const CompleteOrder: React.FunctionComponent = () => {
       dispatch(loadCart(me.id));
       return
     }
-    sessionStorage.removeItem("entry");
-    sessionStorage.removeItem("allEntries");
-    dispatch(updateNonmemberCart([]))
   }, [orders])
 
   return (
-    <section className="complete-order__container">
+    <section css={completeOrderContainer}>
       <div className="complete-order__wrapper">
         <h2>주문이 정상적으로 완료 되었습니다.</h2>
         <p>주문번호: 125399</p>
@@ -41,6 +41,43 @@ const CompleteOrder: React.FunctionComponent = () => {
     </section>
   )
 };
+
+const completeOrderContainer = css`
+  .complete-order__wrapper{
+    width: 40%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 200px 0;
+    white-space: pre-wrap;
+    h2, p, span, em{
+        color: #000000;
+        display: block;
+    }
+    p, span{
+        margin: 20px 0;
+    }
+    h2{
+        font: 700 50px/65px ${font.noto};
+        margin-bottom: 50px;
+    }
+    p{
+        font: 400 16px/16px ${font.noto};
+    }
+    span{
+        font: 400 16px/16px ${font.noto};
+    }
+    em{
+        font: 400 16px/16px ${font.noto};
+        b{
+            font: 500 23px/23px ${font.noto};
+        }
+    }
+    ${media.large} {
+        width: 100%;
+        padding: 2rem 1rem 5rem 1rem;
+    }
+  }
+`
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context: any) => {
   const state = await context.store.getState();

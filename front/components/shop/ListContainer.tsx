@@ -3,10 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectProducts } from 'selectors/product';
 import ListPresenter from './ListPresenter';
 
-interface IListContainerProps {
-}
-
-const ListContainer: React.FunctionComponent<IListContainerProps> = ({
+const ListContainer: React.FunctionComponent = ({
 }) => {
 
     const { products } = useSelector(selectProducts());
@@ -26,19 +23,15 @@ const ListContainer: React.FunctionComponent<IListContainerProps> = ({
     }
 
     return (
-        <section className="shop__container">
-            <div className="shop__wrapper">
-                {
-                    products.map((v, i) => {
-                        return (
-                            <div className="wrap" key={v.id}>
-                                <ListPresenter postId={v.id} post={v} colorCount={colorCount} />
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        </section>
+        <div className="shop__wrapper">
+            {
+                products.map((v, i) => {
+                    return (
+                        <ListPresenter postId={v.id} post={v} colorCount={colorCount} />
+                    )
+                })
+            }
+        </div>
     );
 };
 

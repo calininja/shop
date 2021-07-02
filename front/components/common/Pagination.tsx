@@ -12,6 +12,7 @@ import {
 interface ILastIdProps {
   reviews: any;
 }
+import { css } from '@emotion/react';
 
 const Pagination: React.FunctionComponent<ILastIdProps> = ({ reviews }) => {
 
@@ -86,7 +87,7 @@ const Pagination: React.FunctionComponent<ILastIdProps> = ({ reviews }) => {
   }, [start, end, total]);
 
   return (
-    <section className="pagination__container">
+    <section css={paginationWrapper}>
       <button className={start == 0 ? 'prev--none' : 'prev'} onClick={setPrev}>
         PREV
       </button>
@@ -107,6 +108,55 @@ const Pagination: React.FunctionComponent<ILastIdProps> = ({ reviews }) => {
     </section>
   );
 };
+
+const paginationWrapper = css`
+  text-align: center;
+  ul,button{
+      vertical-align: middle;
+  }
+  button{
+      position: relative;
+      background: none;
+      border: 0;
+      text-indent: -9999px;
+      &::before, &::after{
+          position: absolute;
+          background: #000000;
+          width: 10px;
+          height: 1px;
+          display: block;
+          clear: both;
+          content:'';
+      }
+      &::before{
+          top: 6px;
+          transform: rotate(45deg);
+      }
+      &::after{
+          top: 13px;
+          transform: rotate(-45deg);
+      }
+      &.prev{
+          transform: rotate(-180deg);
+      }
+      &.prev--none, &.next--none{
+          display: none;
+      }
+  }
+  ul{
+      display: inline-block;
+      margin: 0 5px;
+      li{
+          display: inline-block;
+          font: 400 16px/16px $noto;
+          margin: 0 5px;
+          cursor: pointer;
+          &.active{
+              font-weight: bold;
+          }
+      }
+  }
+`
 
 export default Pagination;
 

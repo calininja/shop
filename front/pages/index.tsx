@@ -7,6 +7,7 @@ import { loadUser } from "thunks/users";
 import { loadProducts } from 'thunks/products';
 import { selectProducts } from 'selectors/product';
 import LatestProduct from 'components/home/LatestProduct';
+import { css } from '@emotion/react';
 
 const Home: React.FunctionComponent = () => {
 
@@ -14,7 +15,7 @@ const Home: React.FunctionComponent = () => {
 
   return (
     <>
-      <section className="home__container">
+      <section css={homeContainer}>
         <img style={{ 'position': 'relative', 'top': '-50px' }} src="https://i.natgeofe.com/n/4e57f727-4dfd-4f7d-9c27-9edd6f73cfd0/miami-travel_2x1.jpg" alt="" />
         <LatestProduct item={products} />
       </section>
@@ -22,6 +23,15 @@ const Home: React.FunctionComponent = () => {
     </>
   )
 };
+
+const homeContainer = css`
+  width: 100%;
+  margin: 0 auto 150px;
+  img{
+      width: 100%;
+  }
+`
+
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context: any) => {
   const state = await context.store.getState();

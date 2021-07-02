@@ -11,8 +11,7 @@ import { User } from 'types/user';
 import { IProductState } from 'types/product';
 import { IOrderState } from 'types/order';
 import { IReviewState } from 'types/review';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 import { font } from 'lib/styles/common';
 
@@ -57,11 +56,11 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
 }) => {
 
     return (
-        <>
+        <div css={detailPresenterWrapper}>
             <ProductImage
                 product={product}
             />
-            <div css={productInformationWrapper}>
+            <div className='detail__information'>
                 <form action="" onSubmit={onSubmit}>
                     <ProductCategoryTitle
                         product={product}
@@ -79,14 +78,14 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
                         increase={increase}
                         decrease={decrease}
                     />
-                    <div css={productPrice}>
+                    <div className='product__price'>
                         <span>{product ? product.price.toLocaleString() : ''}</span> 원
                     </div>
-                    <button css={productCart} type="submit">
+                    <button className='product__cart' type="submit">
                         장바구니
                     </button>
                 </form>
-                <div css={productDescription}>
+                <div className='product__description'>
                     <span className="product__head">상세설명</span>
                     <pre>
                         <p className="product-description__body">{product?.content}</p>
@@ -102,67 +101,68 @@ const DetailPresenter: React.FunctionComponent<IDetailPresenterProps> = ({
             </div>
             {viewedProducts && <ViewedProduct viewedProducts={viewedProducts} />}
             {me && orders && <CartPopup popData={popData} />}
-        </>
+        </div>
     );
 };
 
-const productInformationWrapper = css`
-    display: inline-block;
-    width: calc(35% - 50px);
-    padding: 20px 0 20px 50px;
-    vertical-align: top;
-    ul[class*=options]{
-        min-width: 574px;
-        margin: 20px 0;
-        cursor: pointer;
-    }
-    .product__head{
-        display: block;
-        width: 100%;
-        font: 500 16px/16px ${font.noto};
-        color: #000000;
-        margin: 10px 0;
-        padding: 20px 0;
-        border-top: 1px solid #cccccc;
-        text-align: left;
-        &.border-none{
-            border-top: 0;
+const detailPresenterWrapper = css`
+    .detail__information{
+        display: inline-block;
+        width: calc(35% - 50px);
+        padding: 20px 0 20px 50px;
+        vertical-align: top;
+        ul[class*=options]{
+            min-width: 574px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .product__head{
+            display: block;
+            width: 100%;
+            font: 500 16px/16px ${font.noto};
+            color: #000000;
+            margin: 10px 0;
+            padding: 20px 0;
+            border-top: 1px solid #cccccc;
+            text-align: left;
+            &.border-none{
+                border-top: 0;
+            }
+        }
+        .product__price{
+            margin: 1rem 0;
+            span{
+                font: 400 25px/25px ${font.noto};
+            }
+        }
+        .product__cart{
+            width: 70%;
+            max-width: 300px;
+            background: #111111;
+            border: 0;
+            font: 400 16px/55px ${font.noto};
+            height: 55px;
+            color: #ffffff;
+            margin: 20px 0 10px;
+            border-radius: 100px;
+            &:hover{
+                background: #202020;
+            }
+        }
+        .product__description{
+            width: 100%;
+            .product-description__body{
+                font: 400 14px/25px ${font.noto};
+                color: #000000;
+                margin: 20px 0 40px;
+                white-space: pre-line;
+            }  
+        }
+        ${media.large}{
+            float: none;
+            width: 100%;
+            padding-left: 0;
         }
     }
-    ${media.large}{
-        float: none;
-        width: 100%;
-        padding-left: 0;
-    }
 `
-const productPrice = css`
-    margin: 1rem 0;
-    span{
-        font: 400 25px/25px ${font.noto};
-    }
-`
-const productCart = css`
-    width: 70%;
-    max-width: 300px;
-    background: #111111;
-    border: 0;
-    font: 400 16px/55px ${font.noto};
-    height: 55px;
-    color: #ffffff;
-    margin: 20px 0 10px;
-    border-radius: 100px;
-    &:hover{
-        background: #202020;
-    }
-`
-const productDescription = css`
-    width: 100%;
-    .product-description__body{
-        font: 400 14px/25px ${font.noto};
-        color: #000000;
-        margin: 20px 0 40px;
-        white-space: pre-line;
-    }
-`
-
 export default DetailPresenter;

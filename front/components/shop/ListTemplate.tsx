@@ -1,17 +1,20 @@
 import * as React from 'react';
+import { css } from '@emotion/react';
+import { after } from 'lib/styles/common';
 
-interface IListTemplateProps {
-}
-
-const ListTemplate: React.FunctionComponent<IListTemplateProps> = ({
+const ListTemplate: React.FunctionComponent = ({
     children
 }) => {
 
     return (
-        <section className="shop__container">
+        <section css={ListTemplateWrapper}>
             {children}
         </section>
     );
 };
+
+const ListTemplateWrapper = css`
+    ${after()}
+`
 
 export default ListTemplate;

@@ -15,6 +15,8 @@ import LabelInput from 'components/common/LabelInput';
 import LabelTextArea from 'components/common/LabelTextArea';
 import Button from 'components/common/Button';
 import { toast } from 'react-toastify';
+import { css } from '@emotion/react';
+import { font } from 'lib/styles/common';
 
 const PostForm: React.FunctionComponent = () => {
 
@@ -171,6 +173,50 @@ const PostForm: React.FunctionComponent = () => {
         </section>
     );
 };
+
+const postFormContainer = css`
+    width: 350px;
+    margin: 50px auto 100px;
+
+    h2, h3{
+        font: 500 30px/30px ${font.noto};
+        color: #111111;
+        margin: 50px 0 20px;
+    }
+    form{
+        >div{
+            margin: 10px 0;
+            label{
+                font-size: 0;
+            }
+            input, textarea{
+                width: 350px;
+            }
+            textarea{
+                height: auto;
+            }
+        }
+        .custom-button{
+            width: 350px;
+        }
+        .color{
+            padding: 10px 0;
+            input{
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: 0;
+                text-indent: -9999px;
+                margin: 0 5px;
+                cursor: pointer;
+                &.active{
+                    border: 3px solid #000;
+                }
+            }
+        }
+    }
+`
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async (context: any) => {
     const state = await context.store.getState();

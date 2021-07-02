@@ -1,6 +1,5 @@
 import * as React from 'react';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
 
 type ButtonProps =
@@ -17,6 +16,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
     return (
         <button
             css={customButton}
+            className='custom-button'
             {...rest}
         >
             {children}

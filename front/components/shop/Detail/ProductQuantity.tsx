@@ -1,6 +1,5 @@
 import * as React from 'react';
-/** @jsx jsx */
-import { jsx, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { after, font } from 'lib/styles/common';
 
 interface IProductQuantityProps {
@@ -16,25 +15,23 @@ const ProductQuantity: React.FunctionComponent<IProductQuantityProps> = ({
 }) => {
 
     return (
-        <>
-            <div css={productQuantity}
-                className={quantity > 9 ? "product-quantity exceeded" : "product-quantity"}>
-                <span className="product__head border-none">수량</span>
-                <div className="product-quantity__wrapper">
-                    <em>{quantity}</em>
-                    <span
-                        onClick={decrease}
-                        className={quantity <= 1 ? "inactive counting" : "counting"}
-                    >-
-                    </span>
-                    <span
-                        onClick={increase}
-                        className="counting"
-                    >+
-                    </span>
-                </div>
+        <div css={productQuantity}
+            className={quantity > 9 ? "product-quantity exceeded" : "product-quantity"}>
+            <span className="product__head border-none">수량</span>
+            <div className="product-quantity__wrapper">
+                <em>{quantity}</em>
+                <span
+                    onClick={decrease}
+                    className={quantity <= 1 ? "inactive counting" : "counting"}
+                >-
+                </span>
+                <span
+                    onClick={increase}
+                    className="counting"
+                >+
+                </span>
             </div>
-        </>
+        </div>
     );
 };
 
