@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { useCallback } from 'react';
-import { IReviewState } from 'types/review';
+import { IReviewState } from 'store/types/review';
 import Rating from 'components/common/Rating';
-import { showModal } from 'slices/cores';
-import { loadReviews } from 'thunks';
+import { showModal } from 'store/slices/cores';
+import { loadReviews } from 'store/thunks';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUsers } from 'selectors/user';
+import { selectUsers } from 'store/selectors/user';
 import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
+import { toast } from 'react-toastify';
+import { selectProducts } from 'store/selectors/product';
 
 interface IPreviewContainerProps {
     obj: {}
@@ -29,7 +31,7 @@ const ProductPreview: React.FunctionComponent<IPreviewContainerProps> = ({
 
     const onAddReviewClick = () => {
         if (!me) {
-            alert('로그인이 필요합니다.');
+            toast.error('로그인이 필요합니다.');
             return;
         }
         const data = {
@@ -43,6 +45,10 @@ const ProductPreview: React.FunctionComponent<IPreviewContainerProps> = ({
         dispatch(loadReviews(obj));
         dispatch(showModal({ visible: true, mode: 'REVIEW' }))
     }, [])
+
+    const close = () => {
+        dispatch(showModal({ visible: false, mode: 'LOGIN' }));
+    }
 
     return (
         <div css={productPreviewWrapper}>

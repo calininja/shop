@@ -1,21 +1,17 @@
 import * as React from 'react';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signInUser } from 'thunks/users';
-import { showModal } from 'slices/cores';
+import { signInUser } from 'store/thunks/users';
+import { showModal } from 'store/slices/cores';
 import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
-import { backUrl } from 'config/config';
-import { selectUsers } from 'selectors/user';
-import { toast } from 'react-toastify';
+import { selectUsers } from 'store/selectors/user';
 import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
+import { toast } from 'react-toastify';
 
-interface ISignInFormProps {
-}
-
-const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
+const SignInForm: React.FunctionComponent = () => {
     const { me, isSigningIn, error } = useSelector(selectUsers());
     const dispatch = useDispatch();
     const [value, onChange] = useInputs({
@@ -34,12 +30,12 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
         if (me) dispatch(showModal({ visible: false, mode: 'LOGIN' }));
     }, [me, isSigningIn, error])
 
-    const onClickToggle = () => dispatch(showModal({ visible: true, mode: 'JOIN' }));
+    const onToggle = () => dispatch(showModal({ visible: true, mode: 'JOIN' }));
 
     const onLogin = useCallback((e) => {
         e.preventDefault();
         if (!signinId || !password) {
-            alert('내용을 입력해주세요.');
+            toast.error('내용을 입력해주세요.');
             return
         }
         dispatch(signInUser({ signinId, password }));
@@ -70,7 +66,7 @@ const SignInForm: React.FunctionComponent<ISignInFormProps> = () => {
                     </a> */}
                     <Button>로그인</Button>
                     <div>아직 회원이 아니신가요?
-                        <span className="toggle" onClick={onClickToggle}> 회원가입</span>
+                        <span className="toggle" onClick={onToggle}> 회원가입</span>
                     </div>
                 </div>
             </form>

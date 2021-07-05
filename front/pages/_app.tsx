@@ -2,8 +2,8 @@ import * as React from 'react';
 import { NextComponentType } from "next"
 import { AppContext, AppInitialProps, AppProps } from "next/app";
 import Helmet from "react-helmet";
-import wrapper from "store";
-import Applayout from "../components/Applayout";
+import wrapper from "store/store";
+import Applayout from "../components/base/Applayout";
 import Core from 'components/base/Core';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
@@ -90,7 +90,6 @@ const App: NextComponentType<AppContext, AppInitialProps, AppProps> = ({
 
 const reset = css`
 ${emotionReset}
-
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,

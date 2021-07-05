@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectOrders } from 'selectors/order';
+import { selectOrders } from 'store/selectors/order';
 import ProgressBar from '../common/ProgressBar';
 import Link from 'next/link';
 import { font } from 'lib/styles/common';
@@ -17,7 +17,6 @@ const CartPopup: React.FunctionComponent<IOrdersProps> = ({ popData }) => {
     const { isAddingCart } = useSelector(selectOrders());
     const popupRef: React.MutableRefObject<HTMLInputElement> = useRef(null);
 
-    // 프로그레스바
     useEffect(() => {
         const ref = popupRef.current.classList;
         if (isAddingCart == true) {

@@ -2,9 +2,9 @@ import { createAction, createSlice } from "@reduxjs/toolkit";
 import handleError from "lib/redux/handle-error";
 import hydrate from "lib/redux/hydrate";
 import {
- 
-} from "thunks/users";
-import { ICoreInitialState } from "../types/core";
+
+} from "store/thunks/users";
+import { ICoreInitialState } from "store/types/core";
 
 const initialState: ICoreInitialState = {
   visible: false,
@@ -17,10 +17,10 @@ export const coresSlice = createSlice({
   initialState,
   reducers: {
     showModal: (state, action) => {
-      if(action.payload.visible == true) {
+      if (action.payload.visible == true) {
         state.mode = action.payload.mode;
         state.visible = true;
-      }else{
+      } else {
         state.visible = false;
       }
     }
@@ -39,4 +39,4 @@ export const coresSlice = createSlice({
       })
   },
 });
-export const {showModal} = coresSlice.actions;
+export const { showModal } = coresSlice.actions;

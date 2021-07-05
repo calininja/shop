@@ -14,10 +14,9 @@ import {
   deleteReviews,
   loadReviews,
   addViewedProducts
-} from "thunks/products";
+} from "store/thunks/products";
 import { IProductInitialState } from '../types/product';
 
-// 초기 상태값
 const initialState: IProductInitialState = {
   product: null,
   products: [],
@@ -52,11 +51,6 @@ export const productsSlice = createSlice({
       state.start = action.payload.start;
       state.end = action.payload.end;
     },
-    // addViewedProducts: (state, action) => {
-    //   state.isAddingProduct = true;
-    //   state.viewedProducts = action.payload;
-    //   state.isAddingProduct = false;
-    // }
   },
   extraReducers: (builder) => {
     builder

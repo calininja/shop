@@ -1,6 +1,6 @@
 import { createDraftSafeSelector } from "@reduxjs/toolkit";
-import { ordersSlice } from "slices/orders";
-import { AppState } from "store";
+import { ordersSlice } from "store/slices/orders";
+import { AppState } from "store/store";
 
 export const selectOrders = () =>
   createDraftSafeSelector(

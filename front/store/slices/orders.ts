@@ -6,10 +6,9 @@ import {
   deleteCartItem,
   deleteCartItemsAll,
   loadCart,
-} from "thunks/orders";
+} from "store/thunks/orders";
 import { IOrderInitialState } from '../types/order';
 
-// 초기 상태값
 const initialState: IOrderInitialState = {
   orders: [],
   nonMemberCart: [],

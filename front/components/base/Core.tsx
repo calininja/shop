@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectCores } from 'selectors/core';
-import ModalContainer from "../common/ModalContainer";
+import { selectCores } from 'store/selectors/core';
+import ModalTemplate from "../common/ModalTemplate";
 import usePopupCss from './hooks/usePopupCss';
 import useHeaderScroll from './hooks/useHeaderScroll';
 import useCartLoader from './hooks/useCartLoader';
@@ -11,11 +11,7 @@ import useInfiniteScroll from './hooks/useInfiniteScroll';
 import { ToastContainer, Flip } from 'react-toastify';
 import { injectStyle } from "react-toastify/dist/inject-style";
 
-
-interface ICoreProps {
-}
-
-const Core: React.FunctionComponent<ICoreProps> = ({
+const Core: React.FunctionComponent = ({
 
 }) => {
     const { visible } = useSelector(selectCores());
@@ -30,9 +26,10 @@ const Core: React.FunctionComponent<ICoreProps> = ({
     useCartLoader();
     useViewedProduct();
     useInfiniteScroll();
+
     return (
         <>
-            {visible ? <ModalContainer /> : ''}
+            {visible ? <ModalTemplate /> : ''}
             <ToastContainer
                 transition={Flip}
                 position="top-right"

@@ -4,16 +4,20 @@ import { backUrl } from '../../config/config';
 import { css } from '@emotion/react';
 
 interface IImagesProps {
-    image: any;
+    images: {
+        id: number,
+        src: string,
+        productId: number
+    }[];
 }
 
-const Slick: React.FunctionComponent<IImagesProps> = ({ image }) => {
+const Slick: React.FunctionComponent<IImagesProps> = ({ images }) => {
 
     const settings = {
         customPaging: function (i) {
             return (
                 <a>
-                    <img src={`${backUrl}/${image[i].src}`} />
+                    <img src={`${backUrl}/${images[i].src}`} />
                 </a>
             );
         },
@@ -29,14 +33,14 @@ const Slick: React.FunctionComponent<IImagesProps> = ({ image }) => {
         <div css={slick}>
             <Slider {...settings}>
                 {
-                    image && image.length > 1 ?
-                        image.map((v, i) => {
+                    images && images.length > 1 ?
+                        images.map((v, i) => {
                             return (
-                                <img key={i} src={`${backUrl}/${image[i].src}`} alt="이미지" />
+                                <img key={i} src={`${backUrl}/${images[i].src}`} alt="이미지" />
                             )
                         })
                         :
-                        <img src={`${backUrl}/${image[0].src}`} alt="이미지" />
+                        <img src={`${backUrl}/${images[0].src}`} alt="이미지" />
                 }
             </Slider>
         </div>

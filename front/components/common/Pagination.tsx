@@ -1,18 +1,19 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectProducts } from 'selectors/product';
+import { selectProducts } from 'store/selectors/product';
 import {
   loadReviews,
-} from 'thunks/products';
+} from 'store/thunks/products';
 import {
   currentPageNumber,
   updateStartEndPage,
-} from 'slices/products';
+} from 'store/slices/products';
 
 interface ILastIdProps {
-  reviews: any;
+  reviews: IReviewState[];
 }
 import { css } from '@emotion/react';
+import { IReviewState } from 'store/types/review';
 
 const Pagination: React.FunctionComponent<ILastIdProps> = ({ reviews }) => {
 

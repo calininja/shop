@@ -10,22 +10,14 @@ const ProgressBar: React.FunctionComponent<IProgressProps> = ({ progress }) => {
 
     const popupRef: React.MutableRefObject<HTMLInputElement> = useRef(null);
 
-    function css3(val) {
-        const width = {
-            'width': progress + '%',
-            'transition': `${val}`,
-        }
-        return width;
-    }
-
     return (
-        <div css={progressBarWrapper} ref={popupRef}>
-            <div style={!progress ? css3('none') : css3('all 1s linear')}></div>
+        <div css={progressBarWrapper(progress)} ref={popupRef}>
+            <div></div>
         </div>
     );
 };
 
-const progressBarWrapper = css`
+const progressBarWrapper = (progress) => css`
     width: 100%;
     overflow: hidden;
     margin-top: 20px;
@@ -33,6 +25,11 @@ const progressBarWrapper = css`
         width: 1px;
         height: 2px;
         background: red;
+        width: ${progress}%;
+        ${progress && css`
+            transition: all 1s linear;
+        `}
+        transition: all 1s linear;
     }
 `
 

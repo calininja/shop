@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect, useSelector } from 'react-redux';
-import wrapper from 'store';
+import wrapper from 'store/store';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import { loadUser } from "thunks/users";
-import { loadProducts } from 'thunks/products';
-import { loadCart } from 'thunks/orders';
-import ListContainer from '../../../components/shop/ListContainer';
-import ListTemplate from '../../../components/shop/ListTemplate';
+import { loadUser } from "store/thunks/users";
+import { loadProducts } from 'store/thunks/products';
+import { loadCart } from 'store/thunks/orders';
+import ListContainer from 'components/shop/ListContainer';
+import ListTemplate from 'components/shop/ListTemplate';
 
 const CategoryAll: React.FunctionComponent = () => {
 

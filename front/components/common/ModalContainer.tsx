@@ -1,18 +1,15 @@
 import * as React from 'react';
 import { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCores } from 'selectors/core';
-import { showModal } from 'slices/cores';
-import SignInForm from 'components/auth/SignInForm';
-import SignUpForm from 'components/auth/SignUpForm';
-import AddReviewForm from 'components/shop/Detail/AddReviewForm';
-import Review from 'components/shop/Detail/Review';
-import ModalTemplate from './ModalTemplate';
+import { selectCores } from 'store/selectors/core';
+import { showModal } from 'store/slices/cores';
+import ModalPresenter from './ModalPresenter';
 import { css } from '@emotion/react';
 
 const ModalContainer: React.FunctionComponent = ({
 
 }) => {
+
     const [toggle, setToggle] = useState(false);
     const { visible, mode } = useSelector(selectCores());
     const dispatch = useDispatch();
@@ -21,7 +18,7 @@ const ModalContainer: React.FunctionComponent = ({
         visible ? setToggle(true) : setToggle(false);
     }, [visible]);
 
-    const close = useCallback(() => {
+    const onClose = useCallback(() => {
         setToggle(false);
         dispatch(showModal(false));
     }, [toggle]);
@@ -29,12 +26,7 @@ const ModalContainer: React.FunctionComponent = ({
     return (
         <div css={modalContainer}>
             <div className="overlay"></div>
-            <ModalTemplate toggle={toggle} close={close} >
-                {mode == 'LOGIN' && <SignInForm />}
-                {mode == 'JOIN' && <SignUpForm />}
-                {mode == 'REVIEW' && <Review />}
-                {mode == 'ADD_REVIEW' && <AddReviewForm />}
-            </ModalTemplate>
+            <ModalPresenter toggle={toggle} mode={mode} onClose={onClose} />
         </div>
     );
 };

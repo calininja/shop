@@ -14,23 +14,22 @@ export interface IOrderState {
     size: string,
     color: string,
     quantity: number,
-    carts: {
+    carts?: {
         id: number,
         userId: number,
         date: number | null,
         status: number | null
     },
-    images: {
+    images?: {
         id: number,
         productId: number,
         src: string,
     },
-    products: {
+    products?: {
         id: number,
         title: string,
         content: string,
         prdnumber: number,
         price: number
     }
-    // date: string,
 }

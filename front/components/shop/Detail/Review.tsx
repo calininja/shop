@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUsers } from 'selectors/user';
-import { selectProducts } from 'selectors/product';
-import { deleteReviews } from 'thunks';
-import { backUrl } from 'config/config';
 import Router from "next/router";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUsers } from 'store/selectors/user';
+import { selectProducts } from 'store/selectors/product';
+import { deleteReviews } from 'store/thunks';
 import Pagination from 'components/common/Pagination';
-import Rating from '../../common/Rating';
-import { showModal } from 'slices/cores';
+import Rating from 'components/common/Rating';
 import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 import { font } from 'lib/styles/common';
+import { backUrl } from 'config/config';
+import { toast } from 'react-toastify';
 
 const Review: React.FunctionComponent = ({
 }) => {
@@ -20,14 +20,10 @@ const Review: React.FunctionComponent = ({
     const { me } = useSelector(selectUsers());
     const { reviews, product, allReviews } = useSelector(selectProducts());
 
-    const close = () => {
-        dispatch(showModal({ visible: false, mode: 'LOGIN' }));
-    }
-
     const showDeleteConfirm = useCallback((id) => {
         if (confirm("삭제 하시겠습니까?") == true) {
             dispatch(deleteReviews(id))
-            alert('삭제 되었습니다.');
+            toast.info('삭제 되었습니다.');
             Router.push(`/shop/detail/${product.id}`);
         } else {
             return false;
@@ -59,7 +55,6 @@ const Review: React.FunctionComponent = ({
                         </div>
                     </div>
                     <h2><em>{allReviews}</em>개의 <em>REVIEWS</em></h2>
-                    <button className="close" onClick={close}>X</button>
                 </div>
                 <div className="review__contents">
                     {reviews ? reviews.map((v, i, arr) => {

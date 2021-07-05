@@ -6,10 +6,9 @@ import {
   signInUser,
   signOutUser,
   loadUser
-} from "thunks/users";
+} from "store/thunks/users";
 import { IUserInitialState } from "../types/user";
 
-// 초기 상태값
 const initialState: IUserInitialState = {
   me: null,
   isSigningUp: false,

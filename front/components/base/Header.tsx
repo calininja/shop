@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUsers } from 'selectors/user';
-import { selectOrders } from 'selectors/order';
-import { signOutUser } from 'thunks';
-import { loadCart } from 'thunks/orders';
-import { showModal } from 'slices/cores';
+import { selectUsers } from 'store/selectors/user';
+import { selectOrders } from 'store/selectors/order';
+import { signOutUser } from 'store/thunks';
+import { loadCart } from 'store/thunks/orders';
+import { showModal } from 'store/slices/cores';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';

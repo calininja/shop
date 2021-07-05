@@ -84,7 +84,7 @@ const CartPresenter: React.FunctionComponent<ICartPresenterProps> = ({
                             pathname: itemCheck.length >= 1 ? '/order' : '',
                             query: itemCheck.length >= 1 ? {
                                 user: me ? me.signinId : 'anonymous',
-                                getPrice: amount(),
+                                price: amount(),
                                 point: Math.ceil((amount()) * 0.05)
                             } : ''
                         }}

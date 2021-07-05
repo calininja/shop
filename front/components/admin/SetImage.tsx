@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { selectProducts } from 'selectors/product';
-import { backUrl } from '../../config/config';
+import { selectProducts } from 'store/selectors/product';
+import { backUrl } from 'config/config';
 
 interface IsaveColor {
     onClickImageUpload: (imageInput) => void;

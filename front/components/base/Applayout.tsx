@@ -1,8 +1,8 @@
 import * as React from 'react';
-import useDarkmode from './base/hooks/useDarkmode';
+import useDarkmode from './hooks/useDarkmode';
 import CategoryMenu from './CategoryMenu';
-import Footer from './common/Footer';
-import Header from './common/Header';
+import Header from './Header';
+import Footer from './Footer';
 import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 

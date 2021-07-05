@@ -1,22 +1,26 @@
 import * as React from 'react';
-import ProductImage from './ProductImage';
-import ProductSize from './ProductSize';
-import ProductColor from './ProductColor';
-import CartPopup from '../../cart/CartPopup';
-import ViewedProduct from '../../common/ViewedProduct';
-import ProductQuantity from './ProductQuantity';
-import ProductCategoryTitle from './ProductCategoryTitle';
-import ProductPreview from './ProductPreview';
-import { User } from 'types/user';
-import { IProductState } from 'types/product';
-import { IOrderState } from 'types/order';
-import { IReviewState } from 'types/review';
+import { memo } from 'react';
+import ProductImage from 'components/shop/Detail/ProductImage';
+import ProductSize from 'components/shop/Detail/ProductSize';
+import ProductColor from 'components/shop/Detail/ProductColor';
+import CartPopup from 'components/cart/CartPopup';
+import ViewedProduct from 'components/common/ViewedProduct';
+import ProductQuantity from 'components/shop/Detail/ProductQuantity';
+import ProductCategoryTitle from 'components/shop/Detail/ProductCategoryTitle';
+import ProductPreview from 'components/shop/Detail/ProductPreview';
+import { User } from 'store/types/user';
+import { IProductState } from 'store/types/product';
+import { IOrderState } from 'store/types/order';
+import { IReviewState } from 'store/types/review';
 import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 import { font } from 'lib/styles/common';
 
 export interface IDetailPresenterProps {
-    obj: any;
+    obj: {
+        id: number,
+        offset: null
+    };
     me: User;
     product: IProductState;
     products: IProductState[];
@@ -26,9 +30,9 @@ export interface IDetailPresenterProps {
     quantity: number;
     preview: boolean;
     popData: {};
-    viewedProducts: any;
-    onClickSize: (v) => void;
-    onClickColor: (v) => void;
+    viewedProducts: IProductState[];
+    onClickSize: (v: string) => void;
+    onClickColor: (v: string) => void;
     increase: () => void;
     decrease: () => void;
     onPreview: () => void;
@@ -165,4 +169,4 @@ const detailPresenterWrapper = css`
         }
     }
 `
-export default DetailPresenter;
+export default memo(DetailPresenter);

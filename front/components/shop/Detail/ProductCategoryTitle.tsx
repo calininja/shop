@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectProducts } from 'selectors/product';
-import Link from 'next/link';
-import { IProductState } from 'types/product';
+import { selectProducts } from 'store/selectors/product';
+import { IProductState } from 'store/types/product';
 import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
 

@@ -1,25 +1,21 @@
 import * as React from 'react';
-import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import wrapper from 'store';
+import axios from 'axios';
+import wrapper from 'store/store';
 import { connect, useSelector } from 'react-redux';
 import Link from 'next/link';
-import { loadUser } from 'thunks';
-import { selectUsers } from 'selectors/user';
+import { loadUser } from 'store/thunks';
+import { selectUsers } from 'store/selectors/user';
 import { css } from '@emotion/react';
 
 const UserInfo = () => {
 
     const { me } = useSelector(selectUsers());
-    const css: object = {
-        'position': 'relatvie',
-        'padding': 100 + 'px 0 0',
-    }
 
     return (
-        <section css={userInfoContainer} style={css}>
+        <section css={userInfoContainer}>
             {me?.signinId == "admin" ?
-                <div className="admin-menu">
+                <div>
                     <Link href="/admin/PostForm"><a><button>등록</button></a></Link>
                     <Link href="/admin/DeleteForm"><a><button>삭제</button></a></Link>
                 </div>
@@ -30,10 +26,13 @@ const UserInfo = () => {
 };
 
 const userInfoContainer = css`
-    position: relatvie;
-    padding: 100px 0 0';
-    .admin-menu{
+    padding: 100px 0 0;
+    >div{
         text-align: center;
+        a{
+            display: inline-block;
+            margin: 0 5px;
+        }
     }
 `
 

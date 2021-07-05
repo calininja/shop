@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { selectProducts } from 'selectors/product';
-import ListPresenter from './ListPresenter';
+import { selectProducts } from 'store/selectors/product';
+import ListPresenter from 'components/shop/ListPresenter';
 
 const ListContainer: React.FunctionComponent = ({
 }) => {
@@ -27,7 +27,7 @@ const ListContainer: React.FunctionComponent = ({
             {
                 products.map((v, i) => {
                     return (
-                        <ListPresenter postId={v.id} post={v} colorCount={colorCount} />
+                        <ListPresenter key={v.id} postId={v.id} post={v} colorCount={colorCount} />
                     )
                 })
             }

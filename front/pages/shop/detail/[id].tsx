@@ -2,13 +2,13 @@ import * as React from 'react';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { connect, useSelector } from 'react-redux';
-import { selectProducts } from 'selectors/product';
-import { loadProduct, loadProducts } from 'thunks/products';
-import { loadUser } from "thunks/users";
+import { selectProducts } from 'store/selectors/product';
+import { loadProduct, loadProducts } from 'store/thunks/products';
+import { loadUser } from "store/thunks/users";
 import axios from 'axios';
-import wrapper from 'store';
-import DetailTemplate from '../../../components/shop/Detail/DetailTemplate';
-import DetailContainer from '../../../components/shop/Detail/DetailContainer';
+import wrapper from 'store/store';
+import DetailTemplate from 'components/shop/Detail/DetailTemplate';
+import DetailContainer from 'components/shop/Detail/DetailContainer';
 
 const detail: React.FunctionComponent = ({ }) => {
 

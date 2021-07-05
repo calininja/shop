@@ -1,6 +1,6 @@
 import { createDraftSafeSelector } from "@reduxjs/toolkit";
-import { coresSlice } from "slices/cores";
-import { AppState } from "store";
+import { coresSlice } from "store/slices/cores";
+import { AppState } from "store/store";
 
 export const selectCores = () =>
   createDraftSafeSelector(

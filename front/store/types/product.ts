@@ -1,5 +1,5 @@
 import { SerializedError } from "@reduxjs/toolkit";
-import { IReviewState } from "types/review";
+import { IReviewState } from "store/types/review";
 
 export interface IProductInitialState {
     product: IProductState;
@@ -45,6 +45,7 @@ export interface IProductState {
         name: string,
     }
 }
+
 export interface IPostState {
     post: IProductState;
 }

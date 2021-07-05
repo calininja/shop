@@ -1,11 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
+import { User } from 'store/types/user';
 
 axios.defaults.withCredentials = true;
 
 export const registerUser = createAsyncThunk(
   "users/registerUser",
-  async (data: any, thunkAPI) => {
+  async (data: User, thunkAPI) => {
     try {
       const response = await axios.post('api/user/', data, {
         withCredentials: true,
@@ -18,7 +19,7 @@ export const registerUser = createAsyncThunk(
 );
 export const signInUser = createAsyncThunk(
   "users/signInUser",
-  async (data: any, thunkAPI) => {
+  async (data: User, thunkAPI) => {
     try {
       const response = await axios.post('api/user/login', data, {
         withCredentials: true,

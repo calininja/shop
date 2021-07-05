@@ -4,13 +4,13 @@ import { connect, useSelector } from "react-redux";
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import wrapper from "store";
-import { loadUser } from "thunks/users";
-import { loadCart } from 'thunks/orders';
-import { deleteCartItemsAll } from 'thunks/orders';
+import wrapper from "store/store";
+import { loadUser } from "store/thunks/users";
+import { loadCart } from 'store/thunks/orders';
+import { deleteCartItemsAll } from 'store/thunks/orders';
 import { useDispatch } from 'react-redux';
-import { selectOrders } from 'selectors/order';
-import { selectUsers } from 'selectors/user';
+import { selectOrders } from 'store/selectors/order';
+import { selectUsers } from 'store/selectors/user';
 import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 import { font } from 'lib/styles/common';
@@ -18,7 +18,7 @@ import { font } from 'lib/styles/common';
 const CompleteOrder: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const router = useRouter()
-  const { getPrice, name } = router.query
+  const { price, name } = router.query
   const { me } = useSelector(selectUsers());
   const { orders } = useSelector(selectOrders());
 
@@ -34,9 +34,9 @@ const CompleteOrder: React.FunctionComponent = () => {
     <section css={completeOrderContainer}>
       <div className="complete-order__wrapper">
         <h2>주문이 정상적으로 완료 되었습니다.</h2>
-        <p>주문번호: 125399</p>
+        <p>주문번호: {Math.floor(Math.random() * (50000 - 10000))}</p>
         <span>주문자: {name}</span>
-        <em>총 주문 금액: <b>{Number(getPrice).toLocaleString()}</b> 원</em>
+        <em>총 주문 금액: <b>{Number(price).toLocaleString()}</b> 원</em>
       </div>
     </section>
   )

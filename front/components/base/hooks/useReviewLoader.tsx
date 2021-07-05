@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadReviews } from 'thunks';
-import { selectProducts } from 'selectors/product';
+import { loadReviews } from 'store/thunks';
+import { selectProducts } from 'store/selectors/product';
 
-export default function useReviewLoader (obj) {
+export default function useReviewLoader(obj) {
     const dispatch = useDispatch();
     const { isAddingReview, isDeletingReview } = useSelector(selectProducts());
 

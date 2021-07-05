@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOrders } from 'selectors/order';
-import { selectUsers } from 'selectors/user';
-import { deleteCartItem } from 'thunks';
+import { selectOrders } from 'store/selectors/order';
+import { selectUsers } from 'store/selectors/user';
+import { deleteCartItem } from 'store/thunks';
 import CartPresenter from './CartPresenter';
 
 interface ICartContainerProps {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectProducts } from 'selectors/product';
-import { loadProducts } from 'thunks';
+import { selectProducts } from 'store/selectors/product';
+import { loadProducts } from 'store/thunks';
 
 
 export default function useInfiniteScroll() {

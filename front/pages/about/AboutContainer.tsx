@@ -1,9 +1,9 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
-import wrapper from "store";
+import wrapper from "store/store";
 import { connect } from 'react-redux';
-import { loadUser } from 'thunks';
+import { loadUser } from 'store/thunks';
 import { font } from 'lib/styles/common';
 import { css } from '@emotion/react';
 

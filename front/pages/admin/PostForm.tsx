@@ -2,12 +2,12 @@ import * as React from 'react';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import wrapper from 'store';
+import wrapper from 'store/store';
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { selectProducts } from 'selectors/product';
-import { loadUser } from 'thunks';
-import { addProduct, uploadImages, addCategory } from 'thunks/products';
-import { deleteImage } from 'slices/products';
+import { selectProducts } from 'store/selectors/product';
+import { loadUser } from 'store/thunks';
+import { addProduct, uploadImages, addCategory } from 'store/thunks/products';
+import { deleteImage } from 'store/slices/products';
 import SetColor from '../../components/admin/SetColor';
 import SetImage from '../../components/admin/SetImage';
 import useInputs from 'lib/hooks/useInputs';
@@ -104,7 +104,7 @@ const PostForm: React.FunctionComponent = () => {
     }, [title, content, size, color, price, imagePaths, category]);
 
     return (
-        <section className="post-form__container">
+        <section css={postFormContainer} className="post-form__container">
             <h2>상품 등록</h2>
             <form action="" onSubmit={onSubmit} encType="multipart/form-data">
                 <LabelInput

@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { registerUser } from 'thunks/users';
-import { registerDone } from 'slices/users';
-import { selectUsers } from "selectors/user";
-import { showModal } from 'slices/cores';
+import { registerUser } from 'store/thunks/users';
+import { registerDone } from 'store/slices/users';
+import { showModal } from 'store/slices/cores';
+import { selectUsers } from "store/selectors/user";
 import useInputs from 'lib/hooks/useInputs';
 import LabelInput from 'components/common/LabelInput';
 import Button from 'components/common/Button';
-import { toast } from 'react-toastify';
 import { css } from '@emotion/react';
 import { after, font } from 'lib/styles/common';
+import { toast } from 'react-toastify';
 
 const SignUpForm: React.FunctionComponent = () => {
 
@@ -40,8 +40,14 @@ const SignUpForm: React.FunctionComponent = () => {
             signinId: id,
             password,
         }
-        if (id.length < 5) return alert('아이디는 5글자 이상으로 작성하여 주세요.');
-        if (password.length < 5) return alert('패스워드는 5글자 이상으로 작성하여 주세요.');
+        if (id.length < 5) {
+            toast.error('아이디는 5글자 이상으로 작성하여 주세요.');
+            return;
+        }
+        if (password.length < 5) {
+            toast.error('패스워드는 5글자 이상으로 작성하여 주세요.');
+            return;
+        }
         dispatch(registerUser(data));
     }, [id, password, passwordCheck])
 

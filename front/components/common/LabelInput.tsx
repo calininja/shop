@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { memo } from 'react';
 import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
 
@@ -72,4 +73,4 @@ const labelInput = css`
     }
 `
 
-export default LabelInput;
+export default memo(LabelInput);

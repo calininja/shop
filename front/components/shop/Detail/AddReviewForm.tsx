@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview } from '../../../thunks/products';
-import { selectProducts } from 'selectors/product';
+import { addReview } from 'store/thunks/products';
+import { selectProducts } from 'store/selectors/product';
 import Router from "next/router";
 import Rating from '../../common/Rating';
 import { css } from '@emotion/react';
 import { font } from 'lib/styles/common';
 import media from 'lib/styles/media';
 import Button from 'components/common/Button';
+import { toast } from 'react-toastify';
 
 const AddReviewForm: React.FunctionComponent = ({
 }) => {
@@ -25,15 +26,21 @@ const AddReviewForm: React.FunctionComponent = ({
     // Submit
     const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (comments == '' || comments.length < 10) return alert('10 글자 이상 작성 부탁 드립니다.');
-        if (!comments || !comments.trim()) return alert('내용을 작성 하세요.');
+        if (comments == '' || comments.length < 10) {
+            toast.error('10 글자 이상 작성 부탁 드립니다.');
+            return;
+        }
+        if (!comments || !comments.trim()) {
+            toast.error('내용을 작성 하세요.');
+            return;
+        }
         const formData = new FormData();
         formData.append('star', String(star));
         formData.append('comment', comments);
         formData.append('prdId', product.id);
         dispatch(addReview(formData));
         Router.push(`/shop/detail/${product.id}`);
-        alert('등록 되었습니다.');
+        toast.info('등록 되었습니다.');
     }, [comments, product, reviews, isAddingReview]);
 
     return (

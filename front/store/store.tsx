@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, ThunkDispatch, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { createWrapper, Context } from "next-redux-wrapper";
 import { Action } from "redux";
-import rootReducer, { RootState } from "slices/rootReducer";
+import rootReducer, { RootState } from "store/slices/rootReducer";
 
 const store = (context: Context) => {
   const config = configureStore({

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 
-
 const DetailTemplate: React.FunctionComponent = ({
     children
 }) => {

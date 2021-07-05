@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GetServerSideProps } from 'next';
-import { loadUser } from "thunks/users";
-import wrapper from "store";
+import { loadUser } from "store/thunks/users";
+import wrapper from "store/store";
 import axios from 'axios';
 import CartTemplate from 'components/cart/CartTemplate';
 import CartContainer from 'components/cart/CartContainer';

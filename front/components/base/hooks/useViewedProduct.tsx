@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectProducts } from 'selectors/product';
-import { addViewedProducts } from 'thunks/products';
-// import { addViewedProducts } from 'slices/products';
+import { selectProducts } from 'store/selectors/product';
+import { addViewedProducts } from 'store/thunks/products';
 
-export default function useViewedProduct () {
+export default function useViewedProduct() {
     const dispatch = useDispatch();
     const { product } = useSelector(selectProducts());
     const [getSession, setGetSession] = useState(false);
@@ -23,6 +22,7 @@ export default function useViewedProduct () {
             dispatch(addViewedProducts(existingItems))
             setGetSession(false);
         };
+
         // 세션 저장 
         if (
             pagePropsValue.includes('/shop/detail') &&

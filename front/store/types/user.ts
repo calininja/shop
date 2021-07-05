@@ -13,5 +13,5 @@ export interface User {
   id: number;
   signinId: string | number;
   password: any;
-  address: string;
+  // address: string;
 };

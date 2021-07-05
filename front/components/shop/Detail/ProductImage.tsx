@@ -1,6 +1,6 @@
-import Slick from '../../common/Slick';
+import Slick from 'components/common/Slick';
 import * as React from 'react';
-import { IProductState } from 'types/product';
+import { IProductState } from 'store/types/product';
 import { css } from '@emotion/react';
 import media from 'lib/styles/media';
 
@@ -14,7 +14,7 @@ const ProductImage: React.FunctionComponent<IProductImageProps> = ({
 
     return (
         <div css={productImage}>
-            <Slick image={product?.images} />
+            <Slick images={product?.images} />
         </div>
     );
 };

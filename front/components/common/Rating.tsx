@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 interface IStarprops {
     rate: (star: number) => void | null;
-    star: number | string;
+    star: number;
 }
 
 const Rating: React.FunctionComponent<IStarprops> = ({

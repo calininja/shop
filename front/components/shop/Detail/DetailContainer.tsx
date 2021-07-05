@@ -1,25 +1,18 @@
 import * as React from 'react';
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, memo } from 'react';
 import { useState } from 'react';
-import { selectProducts } from 'selectors/product';
+import { selectProducts } from 'store/selectors/product';
 import { useSelector, useDispatch } from 'react-redux';
-import { addCartItem } from 'thunks/orders';
-import { selectUsers } from 'selectors/user';
-import { selectOrders } from 'selectors/order';
-import DetailPresenter from './DetailPresenter';
+import { addCartItem } from 'store/thunks/orders';
+import { selectUsers } from 'store/selectors/user';
+import { selectOrders } from 'store/selectors/order';
+import DetailPresenter from 'components/shop/Detail/DetailPresenter';
 import useReviewLoader from 'components/base/hooks/useReviewLoader';
 import useToggle from 'lib/hooks/useToggle';
 import { toast } from 'react-toastify';
-import { loadReviews } from 'thunks';
+import { loadReviews } from 'store/thunks';
 
-export interface IDetailContainerProps {
-    obj: {
-        id: number,
-        offset: number | null
-    }
-}
-
-const DetailContainer: React.FunctionComponent<IDetailContainerProps> = ({
+const DetailContainer: React.FunctionComponent = ({
 }) => {
 
     const dispatch = useDispatch();
@@ -111,4 +104,4 @@ const DetailContainer: React.FunctionComponent<IDetailContainerProps> = ({
     );
 };
 
-export default DetailContainer;
+export default memo(DetailContainer);
