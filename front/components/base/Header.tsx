@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUsers } from 'store/selectors/user';
-import { selectOrders } from 'store/selectors/order';
-import { signOutUser } from 'store/thunks';
-import { loadCart } from 'store/thunks/orders';
-import { showModal } from 'store/slices/cores';
+import { selectUsers } from '../../store/selectors/user';
+import { selectOrders } from '../../store/selectors/order';
+import { signOutUser } from '../../store/thunks';
+import { loadCart } from '../../store/thunks/orders';
+import { showModal } from '../../store/slices/cores';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-import { font } from 'lib/styles/common';
-import media from 'lib/styles/media';
+import { font } from '../../lib/styles/common';
+import media from '../../lib/styles/media';
 
 interface IPagePathProps {
     pagePath: string;
@@ -25,7 +25,7 @@ const Header: React.FunctionComponent<IPagePathProps> = ({
 
     const dispatch = useDispatch();
     const { me } = useSelector(selectUsers());
-    const { orders, nonMemberCart } = useSelector(selectOrders());
+    const { orders } = useSelector(selectOrders());
     const id = me && orders ? orders.length : orders.length;
 
     const onLogout = useCallback(() => {
@@ -38,7 +38,7 @@ const Header: React.FunctionComponent<IPagePathProps> = ({
     return (
         <section css={headerContainer} className='header__container'>
             <Link href="/"><a className="header__menu">HOME</a></Link>
-            <Link href="/shop/category/CategoryAll"><a className="header__menu">SHOP</a></Link>
+            <Link href="/shop/list/CategoryAll"><a className="header__menu">SHOP</a></Link>
             <Link href="/about"><a className="header__menu">ABOUT</a></Link>
             {
                 <Link
@@ -46,9 +46,7 @@ const Header: React.FunctionComponent<IPagePathProps> = ({
                     as={'/cart'}
                     key={id}
                 >
-                    <a className="header__cart header__menu">{me ? orders.length :
-                        nonMemberCart ? nonMemberCart.length : 0
-                    }</a>
+                    <a className="header__cart header__menu">{me ? orders.length : 0}</a>
                 </Link>
             }
             {

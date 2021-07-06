@@ -1,1 +1,1 @@
-export { default, getServerSideProps } from './category/CategoryAll';
+export { default, getServerSideProps } from './list/CategoryAll';

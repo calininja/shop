@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { registerUser } from 'store/thunks/users';
-import { registerDone } from 'store/slices/users';
-import { showModal } from 'store/slices/cores';
-import { selectUsers } from "store/selectors/user";
-import useInputs from 'lib/hooks/useInputs';
-import LabelInput from 'components/common/LabelInput';
-import Button from 'components/common/Button';
+import { registerUser } from '../../store/thunks/users';
+import { registerDone } from '../../store/slices/users';
+import { showModal } from '../../store/slices/cores';
+import { selectUsers } from '../../store/selectors/user';
+import useInputs from '../../lib/hooks/useInputs';
+import LabelInput from '../../components/common/LabelInput';
+import Button from '../../components/common/Button';
 import { css } from '@emotion/react';
-import { after, font } from 'lib/styles/common';
+import { after, font } from '../../lib/styles/common';
 import { toast } from 'react-toastify';
 
 const SignUpForm: React.FunctionComponent = () => {
@@ -152,6 +152,7 @@ const signUpFormWrapper = css`
                 }
             }
         }
+    }
 `
 
 export default SignUpForm;

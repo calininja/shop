@@ -2,9 +2,9 @@ import * as React from 'react';
 import { NextComponentType } from "next"
 import { AppContext, AppInitialProps, AppProps } from "next/app";
 import Helmet from "react-helmet";
-import wrapper from "store/store";
+import wrapper from "../store/store";
 import Applayout from "../components/base/Applayout";
-import Core from 'components/base/Core';
+import Core from '../components/base/Core';
 import emotionReset from 'emotion-reset';
 import { Global, css } from '@emotion/react';
 

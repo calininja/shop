@@ -10,7 +10,7 @@ export interface IUserInitialState {
 }
 
 export interface User {
-  id: number;
+  id?: number;
   signinId: string | number;
   password: any;
   // address: string;

@@ -8,10 +8,10 @@ const CategoryMenu: React.FunctionComponent = () => {
     return (
         <section css={categoryMenuWrapper}>
             <div className="category-menu__wrapper">
-                <Link href="/shop/category/CategoryAll"><a className="category-menu">전체</a></Link>
-                <Link href="/shop/category/CategoryClothes"><a className="category-menu">의류</a></Link>
-                <Link href="/shop/category/CategoryShoes"><a className="category-menu">신발</a></Link>
-                <Link href="/shop/category/CategoryAccessories"><a className="category-menu">악세서리</a></Link>
+                <Link href="/shop/list/CategoryAll"><a className="category-menu">전체</a></Link>
+                <Link href="/shop/list/CategoryClothes"><a className="category-menu">의류</a></Link>
+                <Link href="/shop/list/CategoryShoes"><a className="category-menu">신발</a></Link>
+                <Link href="/shop/list/CategoryAccessories"><a className="category-menu">악세서리</a></Link>
             </div>
         </section>
     );

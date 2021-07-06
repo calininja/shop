@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectOrders } from 'store/selectors/order';
+import { selectOrders } from '../../store/selectors/order';
 import ProgressBar from '../common/ProgressBar';
 import Link from 'next/link';
-import { font } from 'lib/styles/common';
+import { font } from '../../lib/styles/common';
 import { css } from '@emotion/react';
 
 interface IOrdersProps {

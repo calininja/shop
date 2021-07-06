@@ -1,6 +1,6 @@
 import { createDraftSafeSelector } from "@reduxjs/toolkit";
-import { usersSlice } from "store/slices/users";
-import { AppState } from "store/store";
+import { usersSlice } from "../../store/slices/users";
+import { AppState } from "../../store/store";
 
 export const selectUsers = () =>
   createDraftSafeSelector(

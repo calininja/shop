@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { IProductState } from 'store/types/product';
-import { IReviewState } from 'store/types/review';
+import { IProductState } from '../../store/types/product';
+import { IReviewState } from '../../store/types/review';
 
 axios.defaults.withCredentials = true;
 
 export const addCategory = createAsyncThunk(
   "products/addCategory",
-  async (data: { id: number, name: string }, thunkAPI) => {
+  async (data: any, thunkAPI) => {
     try {
       const response = await axios.post('api/product/category', data, {
         withCredentials: true,
@@ -46,7 +46,7 @@ export const loadCategories = createAsyncThunk(
 );
 export const addProduct = createAsyncThunk(
   "products/addProduct",
-  async (data: IProductState, thunkAPI) => {
+  async (data: FormData, thunkAPI) => {
     try {
       const response = await axios.post('api/product', data, {
         withCredentials: true,
@@ -111,7 +111,7 @@ export const uploadImages = createAsyncThunk(
 );
 export const addReview = createAsyncThunk(
   "products/addReview",
-  async (data: IReviewState, thunkAPI) => {
+  async (data: FormData, thunkAPI) => {
     try {
       const response = await axios.post('api/product/addReview', data, {
         withCredentials: true,

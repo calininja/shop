@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useCallback, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCores } from 'store/selectors/core';
-import { showModal } from 'store/slices/cores';
+import { selectCores } from '../../store/selectors/core';
+import { showModal } from '../../store/slices/cores';
 import ModalPresenter from './ModalPresenter';
 import { css } from '@emotion/react';
 

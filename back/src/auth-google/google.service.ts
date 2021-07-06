@@ -10,19 +10,6 @@ export class GoogleService {
   ) { }
   async googleLogin(req) {
     return { 'signinId': req.email };
-    // if (!req.email) {
-    //   return 'No user from google'
-    // }
-    // const exUser = await this.usersRepository.findOne({
-    //   userId: req.email
-    // })
-    // if (exUser) {
-    //   return JSON.stringify(req.email);
-    // }
-    // await this.usersRepository.save({
-    //   userId: req.email,
-    //   password: null,
-    // });
-    // return null;
+
   }
 }

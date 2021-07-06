@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectProducts } from 'store/selectors/product';
+import { selectProducts } from '../../store/selectors/product';
 import {
   loadReviews,
-} from 'store/thunks/products';
+} from '../../store/thunks/products';
 import {
   currentPageNumber,
   updateStartEndPage,
-} from 'store/slices/products';
+} from '../../store/slices/products';
 
 interface ILastIdProps {
   reviews: IReviewState[];

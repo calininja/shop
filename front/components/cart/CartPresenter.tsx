@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Link from 'next/link';
-import Button from 'components/common/Button';
+import Button from '../../components/common/Button';
 import { backUrl } from '../../config/config';
 import { css } from '@emotion/react';
 import { after, font } from 'lib/styles/common';
-import media from 'lib/styles/media';
+import media from '../../lib/styles/media';
 
 interface ICartPresenterProps {
     me: any;

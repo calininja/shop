@@ -1,10 +1,10 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
-import wrapper from "store/store";
+import wrapper from "../../store/store";
 import { connect } from 'react-redux';
-import { loadUser } from 'store/thunks';
-import { font } from 'lib/styles/common';
+import { loadUser } from '../../store/thunks';
+import { font } from '../../lib/styles/common';
 import { css } from '@emotion/react';
 
 const AboutContainer: React.FunctionComponent = () => {

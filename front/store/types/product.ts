@@ -17,7 +17,7 @@ export interface IProductInitialState {
     start: number;
     end: number;
     current: number;
-    viewedProducts: IProductState[];
+    viewedProducts: any;
 }
 
 export interface IProductState {

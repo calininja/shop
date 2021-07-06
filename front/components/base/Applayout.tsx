@@ -4,7 +4,7 @@ import CategoryMenu from './CategoryMenu';
 import Header from './Header';
 import Footer from './Footer';
 import { css } from '@emotion/react';
-import media from 'lib/styles/media';
+import media from '../../lib/styles/media';
 
 interface IPageProps {
     pagePath: string;

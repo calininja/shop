@@ -7,7 +7,8 @@
       "esnext"
     ],
     "types": [
-      "@emotion/react/types/css-prop"
+      "@emotion/react/types/css-prop",
+      "@types/jest",
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -26,7 +27,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "**/__test__/*.tsx"
   ],
   "exclude": [
     "node_modules"

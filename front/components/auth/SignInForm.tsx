@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signInUser } from 'store/thunks/users';
-import { showModal } from 'store/slices/cores';
-import useInputs from 'lib/hooks/useInputs';
-import LabelInput from 'components/common/LabelInput';
-import Button from 'components/common/Button';
-import { selectUsers } from 'store/selectors/user';
+import { signInUser } from '../../store/thunks/users';
+import { showModal } from '../../store/slices/cores';
+import useInputs from '../../lib/hooks/useInputs';
+import LabelInput from '../../components/common/LabelInput';
+import Button from '../../components/common/Button';
+import { selectUsers } from '../../store/selectors/user';
 import { css } from '@emotion/react';
-import { font } from 'lib/styles/common';
+import { font } from '../../lib/styles/common';
 import { toast } from 'react-toastify';
+import { backUrl } from '../../config/config';
 
 const SignInForm: React.FunctionComponent = () => {
     const { me, isSigningIn, error } = useSelector(selectUsers());
@@ -61,9 +62,9 @@ const SignInForm: React.FunctionComponent = () => {
                     type="password"
                 />
                 <div className="sign__buttons">
-                    {/* <a href={`${backUrl}/api/google/`}>
+                    <a href={`${backUrl}/api/google/`}>
                         <img src="https://www.leocom.kr/images/sign-in-with-google.png" alt="" />
-                    </a> */}
+                    </a>
                     <Button>로그인</Button>
                     <div>아직 회원이 아니신가요?
                         <span className="toggle" onClick={onToggle}> 회원가입</span>

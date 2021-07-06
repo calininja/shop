@@ -1,17 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import handleError from "lib/redux/handle-error";
-import hydrate from "lib/redux/hydrate";
+import handleError from "../../lib/redux/handle-error";
+import hydrate from "../../lib/redux/hydrate";
 import {
   addCartItem,
   deleteCartItem,
   deleteCartItemsAll,
   loadCart,
-} from "store/thunks/orders";
+} from "../../store/thunks/orders";
 import { IOrderInitialState } from '../types/order';
 
 const initialState: IOrderInitialState = {
   orders: [],
-  nonMemberCart: [],
   isAddingCart: false,
   isDeletingCart: false,
   isLoadingCart: false,

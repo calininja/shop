@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview } from 'store/thunks/products';
-import { selectProducts } from 'store/selectors/product';
+import { addReview } from '../../../store/thunks/products';
+import { selectProducts } from '../../../store/selectors/product';
 import Router from "next/router";
 import Rating from '../../common/Rating';
 import { css } from '@emotion/react';
-import { font } from 'lib/styles/common';
-import media from 'lib/styles/media';
-import Button from 'components/common/Button';
+import { font } from '../../../lib/styles/common';
+import media from '../../../lib/styles/media';
+import Button from '../../../components/common/Button';
 import { toast } from 'react-toastify';
 
 const AddReviewForm: React.FunctionComponent = ({

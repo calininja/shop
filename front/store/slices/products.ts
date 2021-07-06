@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import handleError from "lib/redux/handle-error";
-import hydrate from "lib/redux/hydrate";
+import handleError from "../../lib/redux/handle-error";
+import hydrate from "../../lib/redux/hydrate";
 import {
   addProduct,
   deleteProduct,
@@ -14,7 +14,7 @@ import {
   deleteReviews,
   loadReviews,
   addViewedProducts
-} from "store/thunks/products";
+} from "../../store/thunks/products";
 import { IProductInitialState } from '../types/product';
 
 const initialState: IProductInitialState = {

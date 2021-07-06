@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectCores } from 'store/selectors/core';
+import { selectCores } from '../../store/selectors/core';
 import ModalTemplate from "../common/ModalTemplate";
 import usePopupCss from './hooks/usePopupCss';
 import useHeaderScroll from './hooks/useHeaderScroll';

@@ -2,8 +2,8 @@ import * as React from 'react';
 import { css } from '@emotion/react';
 import SignInForm from 'components/auth/SignInForm';
 import SignUpForm from 'components/auth/SignUpForm';
-import AddReviewForm from 'components/shop/Detail/AddReviewForm';
-import Review from 'components/shop/Detail/Review';
+import AddReviewForm from 'components/shop/detail/AddReviewForm';
+import Review from 'components/shop/detail/Review';
 
 interface IModalProps {
     toggle: boolean;

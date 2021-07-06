@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { useEffect, useCallback, memo } from 'react';
 import { useState } from 'react';
-import { selectProducts } from 'store/selectors/product';
+import { selectProducts } from '../../../store/selectors/product';
 import { useSelector, useDispatch } from 'react-redux';
-import { addCartItem } from 'store/thunks/orders';
-import { selectUsers } from 'store/selectors/user';
-import { selectOrders } from 'store/selectors/order';
-import DetailPresenter from 'components/shop/Detail/DetailPresenter';
-import useReviewLoader from 'components/base/hooks/useReviewLoader';
-import useToggle from 'lib/hooks/useToggle';
+import { addCartItem } from '../../../store/thunks/orders';
+import { selectUsers } from '../../../store/selectors/user';
+import { selectOrders } from '../../../store/selectors/order';
+import DetailPresenter from '../../../components/shop/detail/DetailPresenter';
+import useReviewLoader from '../../../components/base/hooks/useReviewLoader';
+import useToggle from '../../../lib/hooks/useToggle';
 import { toast } from 'react-toastify';
-import { loadReviews } from 'store/thunks';
+import { loadReviews } from '../../../store/thunks';
 
 const DetailContainer: React.FunctionComponent = ({
 }) => {
@@ -76,9 +76,7 @@ const DetailContainer: React.FunctionComponent = ({
         formData.append('color', color);
         formData.append('quantity', String(quantity));
         formData.append('id', product.id)
-        if (color && size) {
-            return dispatch(addCartItem(formData));
-        };
+        dispatch(addCartItem(formData));
     }, [color, size, quantity, orders]);
 
     return (

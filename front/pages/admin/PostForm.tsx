@@ -2,21 +2,21 @@ import * as React from 'react';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import wrapper from 'store/store';
+import wrapper from '../../store/store';
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { selectProducts } from 'store/selectors/product';
-import { loadUser } from 'store/thunks';
-import { addProduct, uploadImages, addCategory } from 'store/thunks/products';
-import { deleteImage } from 'store/slices/products';
+import { selectProducts } from '../../store/selectors/product';
+import { loadUser } from '../../store/thunks';
+import { addProduct, uploadImages, addCategory } from '../../store/thunks/products';
+import { deleteImage } from '../../store/slices/products';
 import SetColor from '../../components/admin/SetColor';
 import SetImage from '../../components/admin/SetImage';
-import useInputs from 'lib/hooks/useInputs';
-import LabelInput from 'components/common/LabelInput';
-import LabelTextArea from 'components/common/LabelTextArea';
-import Button from 'components/common/Button';
+import useInputs from '../../lib/hooks/useInputs';
+import LabelInput from '../../components/common/LabelInput';
+import LabelTextArea from '../../components/common/LabelTextArea';
+import Button from '../../components/common/Button';
 import { toast } from 'react-toastify';
 import { css } from '@emotion/react';
-import { font } from 'lib/styles/common';
+import { font } from '../../lib/styles/common';
 
 const PostForm: React.FunctionComponent = () => {
 

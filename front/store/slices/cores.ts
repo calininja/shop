@@ -1,10 +1,10 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
-import handleError from "lib/redux/handle-error";
-import hydrate from "lib/redux/hydrate";
+import handleError from "../../lib/redux/handle-error";
+import hydrate from "../../lib/redux/hydrate";
 import {
 
-} from "store/thunks/users";
-import { ICoreInitialState } from "store/types/core";
+} from "../../store/thunks/users";
+import { ICoreInitialState } from "../../store/types/core";
 
 const initialState: ICoreInitialState = {
   visible: false,

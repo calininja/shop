@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
-import { selectProducts } from 'store/selectors/product';
-import ListPresenter from 'components/shop/ListPresenter';
+import { selectProducts } from '../../../store/selectors/product';
+import ListPresenter from '../../../components/shop/list/ListPresenter';
 
 const ListContainer: React.FunctionComponent = ({
 }) => {

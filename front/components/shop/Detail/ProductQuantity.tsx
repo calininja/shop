@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '@emotion/react';
-import { after, font } from 'lib/styles/common';
+import { after, font } from '../../../lib/styles/common';
 
 interface IProductQuantityProps {
     quantity: any;

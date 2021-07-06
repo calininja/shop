@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { IOrderState } from 'store/types/order';
+import { IOrderState } from '../../store/types/order';
 
 axios.defaults.withCredentials = true;
 
 export const addCartItem = createAsyncThunk(
   "orders/addCartItem",
-  async (data: IOrderState, thunkAPI) => {
+  async (data: FormData, thunkAPI) => {
     try {
       const response = await axios.post(`api/order/`, data, {
         withCredentials: true,

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectProducts } from 'store/selectors/product';
+import { selectProducts } from '../../../store/selectors/product';
 import { css } from '@emotion/react';
-import media from 'lib/styles/media';
-import { after, font } from 'lib/styles/common';
+import media from '../../../lib/styles/media';
+import { after, font } from '../../../lib/styles/common';
 
 interface IProductSize {
     onClickSize: (v: string | object) => void;

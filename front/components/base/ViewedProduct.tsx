@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { backUrl } from 'config/config';
+import { backUrl } from '../../config/config';
 import { css } from '@emotion/react';
-import { font } from 'lib/styles/common';
-import media from 'lib/styles/media';
+import { font } from '../../lib/styles/common';
+import media from '../../lib/styles/media';
 
 interface IViewdProducts {
     viewedProducts: any;

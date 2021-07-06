@@ -4,10 +4,12 @@
   "scripts": {
     "build": "next build",
     "dev": "next -p 3060",
-    "start": "cross-env NODE_ENV=production next start -p 80"
+    "start": "cross-env NODE_ENV=production next start -p 80",
+    "test": "jest --watchAll --verbose"
   },
   "dependencies": {
     "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/react": "^11.4.0",
@@ -21,6 +23,8 @@
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "awesome-typescript-loader": "^5.2.1",
     "axios": "^0.18.0",
+    "babel-jest": "^27.0.6",
+    "babel-preset-react": "^6.24.1",
     "compression-webpack-plugin": "^5.0.0",
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
@@ -38,6 +42,8 @@
     "react-toastify": "^7.0.4",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "ts-jest": "^27.0.3",
+    "tsconfig-paths-jest": "0.0.1",
     "typescript": "^4.0.5"
   },
   "devDependencies": {
@@ -45,6 +51,9 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router": "^5.1.13",
     "@types/react-router-dom": "^5.1.7",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@types/jest": "^26.0.23",
     "@zeit/next-sass": "^1.0.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
@@ -55,6 +64,7 @@
     "eslint-plugin-react-hooks": "^1.6.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
+    "jest": "^27.0.6",
     "webpack": "^4.30.0"
   }
 }

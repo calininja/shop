@@ -1,8 +1,8 @@
-import Slick from 'components/common/Slick';
 import * as React from 'react';
-import { IProductState } from 'store/types/product';
+import Slick from '../../../components/common/Slick';
+import { IProductState } from '../../../store/types/product';
 import { css } from '@emotion/react';
-import media from 'lib/styles/media';
+import media from '../../../lib/styles/media';
 
 interface IProductImageProps {
     product: IProductState;

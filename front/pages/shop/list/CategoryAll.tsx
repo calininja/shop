@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { connect, useSelector } from 'react-redux';
-import { GetServerSideProps } from 'next';
+import wrapper from '../../../store/store';
 import axios from 'axios';
-import wrapper from 'store/store';
-import { loadUser } from "store/thunks/users";
-import { loadCategories } from 'store/thunks/products';
-import { loadCart } from 'store/thunks/orders';
-import ListContainer from 'components/shop/ListContainer';
-import ListTemplate from 'components/shop/ListTemplate';
+import { GetServerSideProps } from 'next';
+import { loadUser } from "../../../store/thunks/users";
+import { loadProducts } from '../../../store/thunks/products';
+import { loadCart } from '../../../store/thunks/orders';
+import ListContainer from '../../../components/shop/list/ListContainer';
+import ListTemplate from '../../../components/shop/list/ListTemplate';
 
-const CategoryShoes: React.FunctionComponent = () => {
+const CategoryAll: React.FunctionComponent = () => {
 
     return (
         <ListTemplate>
@@ -24,20 +24,16 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
     axios.defaults.headers.Cookie = '';
     if (context.req && cookie) axios.defaults.headers.Cookie = cookie;
     if (!state.users.me) await context.store.dispatch(loadUser());
-    const data = {
-        lastId: 0,
-        categoryId: 2
-    }
-    await context.store.dispatch(loadCategories(data));
+    await context.store.dispatch(loadProducts(null));
     if (state.users.me) await context.store.dispatch(loadCart(state.users.me.id));
 
     return {
         props: {
-            pathname: "/category/CategoryShoes",
+            pathname: "/category/CategoryAll",
         }
     };
 }
 );
 
 
-export default connect(state => state)(CategoryShoes);
+export default connect(state => state)(CategoryAll);

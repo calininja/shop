@@ -29,18 +29,9 @@ const PopupPostCode: React.FunctionComponent<IAddressProps> = ({
         findAddress(fullAddress, data.zonecode);
     }, [])
 
-    const postCodeStyle: React.CSSProperties = {
-        display: 'block',
-        position: 'absolute',
-        top: '30%', left: '50%',
-        width: '100%', height: '400px',
-        transform: 'translate(-50%,-50%)',
-        padding: '7px',
-    };
-
     return (
         <div>
-            <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
+            <DaumPostcode onComplete={handlePostCode} />
             {/* 닫기 버튼 생성 */}
             <button type='button' onClick={() => { onClose() }} className='postCode_btn'>닫기</button>
         </div>

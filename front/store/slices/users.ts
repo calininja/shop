@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import handleError from "lib/redux/handle-error";
-import hydrate from "lib/redux/hydrate";
+import handleError from "../../lib/redux/handle-error";
+import hydrate from "../../lib/redux/hydrate";
 import {
   registerUser,
   signInUser,
   signOutUser,
   loadUser
-} from "store/thunks/users";
+} from "../../store/thunks/users";
 import { IUserInitialState } from "../types/user";
 
 const initialState: IUserInitialState = {

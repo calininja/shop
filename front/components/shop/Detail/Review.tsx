@@ -2,15 +2,15 @@ import * as React from 'react';
 import { useCallback } from 'react';
 import Router from "next/router";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUsers } from 'store/selectors/user';
-import { selectProducts } from 'store/selectors/product';
-import { deleteReviews } from 'store/thunks';
-import Pagination from 'components/common/Pagination';
-import Rating from 'components/common/Rating';
+import { selectUsers } from '../../../store/selectors/user';
+import { selectProducts } from '../../../store/selectors/product';
+import { deleteReviews } from '../../../store/thunks';
+import Pagination from '../../../components/common/Pagination';
+import Rating from '../../../components/common/Rating';
 import { css } from '@emotion/react';
-import media from 'lib/styles/media';
-import { font } from 'lib/styles/common';
-import { backUrl } from 'config/config';
+import media from '../../../lib/styles/media';
+import { font } from '../../../lib/styles/common';
+import { backUrl } from '../../../config/config';
 import { toast } from 'react-toastify';
 
 const Review: React.FunctionComponent = ({

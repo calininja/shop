@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '@emotion/react';
-import media from 'lib/styles/media';
-import { font } from 'lib/styles/common';
+import media from '../../lib/styles/media';
+import { font } from '../../lib/styles/common';
 
 interface ICartTemplateProps {
 }

@@ -2,7 +2,6 @@ import { SerializedError } from "@reduxjs/toolkit";
 
 export interface IOrderInitialState {
     orders: IOrderState[];
-    nonMemberCart: any,
     isAddingCart: boolean;
     isDeletingCart: boolean;
     isLoadingCart: boolean;
@@ -13,7 +12,7 @@ export interface IOrderState {
     id: number | any,
     size: string,
     color: string,
-    quantity: number,
+    quantity: string,
     carts?: {
         id: number,
         userId: number,

@@ -6,7 +6,7 @@ import wrapper from "store/store";
 import { loadUser } from "store/thunks/users";
 import { loadProducts } from 'store/thunks/products';
 import { selectProducts } from 'store/selectors/product';
-import LatestProduct from 'components/home/LatestProduct';
+import LatestProduct from 'components/base/LatestProduct';
 import { css } from '@emotion/react';
 import { backUrl } from 'config/config';
 

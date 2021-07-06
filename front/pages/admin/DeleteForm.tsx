@@ -2,14 +2,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
-import wrapper from 'store/store';
+import wrapper from '../../store/store';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import { loadUser } from 'store/thunks';
-import { deleteCategory, deleteProduct } from 'store/thunks/products';
-import useInputs from 'lib/hooks/useInputs';
-import LabelInput from 'components/common/LabelInput';
-import Button from 'components/common/Button';
+import { loadUser } from '../../store/thunks';
+import { deleteCategory, deleteProduct } from '../../store/thunks/products';
+import useInputs from '../../lib/hooks/useInputs';
+import LabelInput from '../../components/common/LabelInput';
+import Button from '../../components/common/Button';
 import { css } from '@emotion/react';
 
 const DeleteForm = () => {

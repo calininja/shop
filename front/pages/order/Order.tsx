@@ -2,10 +2,10 @@ import * as React from 'react';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import wrapper from "store/store";
-import { loadUser } from "store/thunks/users";
-import OrderTemplate from 'components/order/OrderTemplate';
-import OrderContainer from 'components/order/OrderContainer';
+import wrapper from '../../store/store';
+import { loadUser } from '../../store/thunks/users';
+import OrderTemplate from '../../components/order/OrderTemplate';
+import OrderContainer from '../../components/order/OrderContainer';
 
 const Order: React.FunctionComponent = () => {
     const router = useRouter()

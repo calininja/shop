@@ -4,16 +4,16 @@ import { connect, useSelector } from "react-redux";
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import wrapper from "store/store";
-import { loadUser } from "store/thunks/users";
-import { loadCart } from 'store/thunks/orders';
-import { deleteCartItemsAll } from 'store/thunks/orders';
+import wrapper from "../../store/store";
+import { loadUser } from '../../store/thunks/users';
+import { loadCart } from '../../store/thunks/orders';
+import { deleteCartItemsAll } from '../../store/thunks/orders';
 import { useDispatch } from 'react-redux';
-import { selectOrders } from 'store/selectors/order';
-import { selectUsers } from 'store/selectors/user';
+import { selectOrders } from '../../store/selectors/order';
+import { selectUsers } from '../../store/selectors/user';
 import { css } from '@emotion/react';
-import media from 'lib/styles/media';
-import { font } from 'lib/styles/common';
+import media from '../../lib/styles/media';
+import { font } from '../../lib/styles/common';
 
 const CompleteOrder: React.FunctionComponent = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectProducts } from 'store/selectors/product';
-import { addViewedProducts } from 'store/thunks/products';
+import { selectProducts } from '../../../store/selectors/product';
+import { addViewedProducts } from '../../../store/thunks/products';
 
 export default function useViewedProduct() {
     const dispatch = useDispatch();

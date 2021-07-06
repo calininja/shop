@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
-import LabelInput from 'components/common/LabelInput';
+import LabelInput from '../../components/common/LabelInput';
 import { css } from '@emotion/react';
-import { font } from 'lib/styles/common';
-import media from 'lib/styles/media';
-import Button from 'components/common/Button';
+import { font } from '../../lib/styles/common';
+import media from '../../lib/styles/media';
+import Button from '../../components/common/Button';
 import AddressPopup from 'components/order/AddressPopup';
-import Coupon from 'components/order/Coupon';
+import Coupon from '../../components/order/Coupon';
 
 interface IOrderPresenterProps {
     user: string | string[];

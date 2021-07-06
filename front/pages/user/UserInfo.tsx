@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
-import wrapper from 'store/store';
+import wrapper from '../../store/store';
 import { connect, useSelector } from 'react-redux';
 import Link from 'next/link';
-import { loadUser } from 'store/thunks';
-import { selectUsers } from 'store/selectors/user';
+import { loadUser } from '../../store/thunks';
+import { selectUsers } from '../../store/selectors/user';
 import { css } from '@emotion/react';
 
 const UserInfo = () => {

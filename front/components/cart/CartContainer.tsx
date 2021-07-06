@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectOrders } from 'store/selectors/order';
-import { selectUsers } from 'store/selectors/user';
-import { deleteCartItem } from 'store/thunks';
+import { selectOrders } from '../../store/selectors/order';
+import { selectUsers } from '../../store/selectors/user';
+import { deleteCartItem } from '../../store/thunks';
 import CartPresenter from './CartPresenter';
 
 interface ICartContainerProps {
@@ -20,7 +20,7 @@ const CartContainer: React.FunctionComponent<ICartContainerProps> = ({
     const amount = useCallback(() => {
         const arr = [];
         orders.forEach((v, i) => {
-            if (itemCheck.includes(v.id)) arr.push(v.products.price * v.quantity);
+            if (itemCheck.includes(v.id)) arr.push(v.products.price * Number(v.quantity));
         })
         const result = arr.length > 0 && arr.reduce((acc, cur, i) => acc + cur);
         return arr.length > 0 ? result + 3000 : 0;

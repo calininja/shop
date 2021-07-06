@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { memo } from 'react';
-import ProductImage from 'components/shop/Detail/ProductImage';
-import ProductSize from 'components/shop/Detail/ProductSize';
-import ProductColor from 'components/shop/Detail/ProductColor';
-import CartPopup from 'components/cart/CartPopup';
-import ViewedProduct from 'components/common/ViewedProduct';
-import ProductQuantity from 'components/shop/Detail/ProductQuantity';
-import ProductCategoryTitle from 'components/shop/Detail/ProductCategoryTitle';
-import ProductPreview from 'components/shop/Detail/ProductPreview';
-import { User } from 'store/types/user';
-import { IProductState } from 'store/types/product';
-import { IOrderState } from 'store/types/order';
-import { IReviewState } from 'store/types/review';
+import ProductImage from '../../../components/shop/detail/ProductImage';
+import ProductSize from '../../../components/shop/detail/ProductSize';
+import ProductColor from '../../../components/shop/detail/ProductColor';
+import CartPopup from '../../../components/cart/CartPopup';
+import ViewedProduct from '../../../components/base/ViewedProduct';
+import ProductQuantity from '../../../components/shop/detail/ProductQuantity';
+import ProductCategoryTitle from '../../../components/shop/detail/ProductCategoryTitle';
+import ProductPreview from '../../../components/shop/detail/ProductPreview';
+import { User } from '../../../store/types/user';
+import { IProductState } from '../../../store/types/product';
+import { IOrderState } from '../../../store/types/order';
+import { IReviewState } from '../../../store/types/review';
 import { css } from '@emotion/react';
-import media from 'lib/styles/media';
-import { font } from 'lib/styles/common';
+import media from '../../../lib/styles/media';
+import { font } from '../../../lib/styles/common';
 
 export interface IDetailPresenterProps {
     obj: {
