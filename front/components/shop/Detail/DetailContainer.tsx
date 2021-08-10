@@ -15,6 +15,11 @@ import { loadReviews } from '../../../store/thunks';
 const DetailContainer: React.FunctionComponent = ({
 }) => {
 
+    // console.log('디테일 컨테이너 렌더링')
+    // useEffect(() => {
+    //     console.log('디테일 컨테이너 리렌더링')
+    // }, [])
+
     const dispatch = useDispatch();
     const { me } = useSelector(selectUsers());
     const { product, products, reviews, allReviews, viewedProducts } = useSelector(selectProducts());

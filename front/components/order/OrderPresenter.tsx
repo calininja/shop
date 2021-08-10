@@ -5,8 +5,8 @@ import { css } from '@emotion/react';
 import { font } from '../../lib/styles/common';
 import media from '../../lib/styles/media';
 import Button from '../../components/common/Button';
-import AddressPopup from 'components/order/AddressPopup';
-import Coupon from '../../components/order/Coupon';
+import AddressPopup from 'components/order/utils/AddressPopup';
+import Coupon from '../../components/order/utils/Coupon';
 
 interface IOrderPresenterProps {
     user: string | string[];

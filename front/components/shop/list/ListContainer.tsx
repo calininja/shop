@@ -1,10 +1,16 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectProducts } from '../../../store/selectors/product';
 import ListPresenter from '../../../components/shop/list/ListPresenter';
 
 const ListContainer: React.FunctionComponent = ({
 }) => {
+
+    // console.log('리스트 컨테이너 렌더링')
+    // useEffect(() => {
+    //     console.log('리스트 컨테이너 리렌더링')
+    // }, [])
 
     const { products } = useSelector(selectProducts());
 

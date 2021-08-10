@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { useCallback } from 'react';
-import { IReviewState } from '../../../store/types/review';
-import Rating from '../../../components/common/Rating';
-import { showModal } from '../../../store/slices/cores';
-import { loadReviews } from '../../../store/thunks';
+import { IReviewState } from '../../../../store/types/review';
+import Rating from '../../../../components/common/Rating';
+import { showModal } from '../../../../store/slices/cores';
+import { loadReviews } from '../../../../store/thunks';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUsers } from '../../../store/selectors/user';
+import { selectUsers } from '../../../../store/selectors/user';
 import { css } from '@emotion/react';
-import { font } from '../../../lib/styles/common';
+import { font } from '../../../../lib/styles/common';
 import { toast } from 'react-toastify';
-import { selectProducts } from '../../../store/selectors/product';
+import { selectProducts } from '../../../../store/selectors/product';
 
 interface IPreviewContainerProps {
-    obj: {}
+    obj: any;
     reviews: IReviewState[]
     allReviews: number;
     preview: boolean;

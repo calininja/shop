@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
 
     return {
         props: {
-            pathname: "/PostForm",
+            pathname: "/UserInfo",
         }
     };
 }
