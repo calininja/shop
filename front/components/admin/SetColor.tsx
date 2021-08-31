@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useRef } from 'react';
 
-interface IsaveColor {
+interface ISetColorProps {
     onChangeColor: (e: any, i: any, colorInput: any) => void;
 }
 
-const SaveColor: React.FunctionComponent<IsaveColor> = ({ onChangeColor }) => {
+const SaveColor: React.FunctionComponent<ISetColorProps> = ({ onChangeColor }) => {
 
     const colorInput: React.MutableRefObject<HTMLInputElement> = useRef(null);
     const colorArray = [

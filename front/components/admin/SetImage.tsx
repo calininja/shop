@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 import { selectProducts } from '../../store/selectors/product';
 import { backUrl } from '../../config/config';
 
-interface IsaveColor {
+interface ISetImageProps {
     onClickImageUpload: (imageInput) => void;
     onChangeImages: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onRemoveImage: (i: any) => (e: any) => void;
 }
 
-const SetImage: React.FunctionComponent<IsaveColor> = ({
+const SetImage: React.FunctionComponent<ISetImageProps> = ({
     onClickImageUpload,
     onChangeImages,
     onRemoveImage
