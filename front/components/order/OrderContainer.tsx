@@ -91,7 +91,6 @@ const OrderContainer: React.FunctionComponent<IOrderTemplate> = ({
             price={price}
             user={user}
             point={point}
-
             achieve={achieve}
             addressState={addressState}
             couponList={couponList}

@@ -6,7 +6,7 @@ describe('SignInForm', () => {
     const setup = (props?) => {
         // const initialProps = {
         // }
-        return render(<SignInForm />);
+        return render(<SignInForm {...props} />);
     };
     it('reders properly', () => {
         setup();

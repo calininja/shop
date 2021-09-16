@@ -105,10 +105,11 @@ const reviewContainer = css`
         overflow-y: auto;
         border: 1px solid #cccccc;
         background: #ffffff;
+        padding-top: 94px;
         z-index: 3;
         .review__nav{
             display: flex;
-            justify-content: end;
+            justify-content: flex-start;
             position: fixed;
             top: 0;
             width: 100%;

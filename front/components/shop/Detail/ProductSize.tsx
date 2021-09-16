@@ -59,6 +59,7 @@ const productSize = css`
         border: 1px solid #ccc;
         border-radius: 5px;
         text-align: center;
+        user-select: none;
         &:hover{
             border: 1px solid #000000;
         }

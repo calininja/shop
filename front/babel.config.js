@@ -1,13 +1,12 @@
 module.exports = {
-    "presets": [
+    presets: [
         "next/babel",
         "@babel/preset-env",
         "@babel/preset-react",
         "@babel/preset-typescript",
         "@emotion/babel-preset-css-prop",
     ],
-    "plugins": [
-        "@babel/plugin-transform-typescript",
-        "@babel/plugin-transform-runtime"
+    plugins: [
+        "@babel/plugin-transform-runtime",
     ]
 }

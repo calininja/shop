@@ -36,14 +36,18 @@ const ProductQuantity: React.FunctionComponent<IProductQuantityProps> = ({
 };
 
 const productQuantity = css`
+    ${after()}
     &.exceeded{
-        ${after()}{
+        &::after{
             display: block;
             content: '10개까지 구매 가능합니다.';
             clear: both;
             color: red;
             white-space: nowrap;
         }
+    }
+    .counting{
+        user-select: none
     }
     .product__head{
         width: auto;

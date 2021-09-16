@@ -65,6 +65,7 @@ const productColor = css`
         text-transform: uppercase;
         border: 1px solid #ffffff;
         text-indent: -9999px;
+        user-select: none;
         &:nth-child(4){
             clear: both;
         }
