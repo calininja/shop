@@ -23,3 +23,8 @@ DB_PASSWORD=
 
 DB_DATABASE=shop
 
+![shop_gif01](https://user-images.githubusercontent.com/39756786/133566576-a649b2f3-5a35-4b80-bab7-893b21436e8c.gif)
+![shop_gif02](https://user-images.githubusercontent.com/39756786/133566615-5ca43a1b-fc64-4cbb-b840-c9f37b0e14e5.gif)
+![shop_gif03](https://user-images.githubusercontent.com/39756786/133566620-b534ffa3-e042-4015-8d6d-96669c2703d0.gif)
+![shop_gif04](https://user-images.githubusercontent.com/39756786/133566622-617ba39a-3a80-421b-b9a0-02bf6014c44a.gif)
+![shop_gif05](https://user-images.githubusercontent.com/39756786/133566623-afb18556-df48-40a3-af96-d0b5ecb48092.gif)
