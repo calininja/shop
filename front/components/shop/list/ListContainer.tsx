@@ -29,7 +29,7 @@ const ListContainer: React.FunctionComponent = ({
     }
 
     return (
-        <div className="shop__wrapper">
+        <>
             {
                 products.map((v, i) => {
                     return (
@@ -37,7 +37,7 @@ const ListContainer: React.FunctionComponent = ({
                     )
                 })
             }
-        </div>
+        </>
     );
 };
 
