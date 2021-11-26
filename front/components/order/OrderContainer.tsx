@@ -1,4 +1,4 @@
-import useInputs from '../../lib/hooks/useInputs';
+import useInputs from '../../hooks/useInputs';
 import React, { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import OrderPresenter from './OrderPresenter';

@@ -5,7 +5,7 @@ import { registerUser } from '../../store/thunks/users';
 import { registerDone } from '../../store/slices/users';
 import { showModal } from '../../store/slices/cores';
 import { selectUsers } from '../../store/selectors/user';
-import useInputs from '../../lib/hooks/useInputs';
+import useInputs from '../../hooks/useInputs';
 import LabelInput from '../../components/common/LabelInput';
 import Button from '../../components/common/Button';
 import { css } from '@emotion/react';

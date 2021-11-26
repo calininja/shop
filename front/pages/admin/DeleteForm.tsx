@@ -7,7 +7,7 @@ import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import { loadUser } from '../../store/thunks';
 import { deleteCategory, deleteProduct } from '../../store/thunks/products';
-import useInputs from '../../lib/hooks/useInputs';
+import useInputs from '../../hooks/useInputs';
 import LabelInput from '../../components/common/LabelInput';
 import Button from '../../components/common/Button';
 import { css } from '@emotion/react';
@@ -21,8 +21,8 @@ const DeleteForm = () => {
     })
     const { id, categoryId } = value;
 
-    const onDeleteProduct = (e) => dispatch(deleteProduct(id))
-    const onDeleteCategory = (e) => dispatch(deleteCategory(categoryId))
+    const onDeleteProduct = (e) => dispatch(deleteProduct(Number(id)))
+    const onDeleteCategory = (e) => dispatch(deleteCategory(Number(categoryId)))
 
     return (
         <div css={DeleteFormContainer}>

@@ -7,8 +7,8 @@ import { addCartItem } from '../../../store/thunks/orders';
 import { selectUsers } from '../../../store/selectors/user';
 import { selectOrders } from '../../../store/selectors/order';
 import DetailPresenter from '../../../components/shop/detail/DetailPresenter';
-import useReviewLoader from '../../../components/base/hooks/useReviewLoader';
-import useToggle from '../../../lib/hooks/useToggle';
+import useReviewLoader from '../../../hooks/useReviewLoader';
+import useToggle from '../../../hooks/useToggle';
 import { toast } from 'react-toastify';
 import { loadReviews } from '../../../store/thunks';
 

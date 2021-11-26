@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectCores } from '../../../store/selectors/core';
+import { selectCores } from '../store/selectors/core';
 
 
 export default function usePopup() {

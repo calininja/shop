@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadReviews } from '../../../store/thunks';
-import { selectProducts } from '../../../store/selectors/product';
+import { loadReviews } from '../store/thunks';
+import { selectProducts } from '../store/selectors/product';
 
 export default function useReviewLoader(obj) {
     const dispatch = useDispatch();

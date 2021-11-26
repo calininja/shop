@@ -3,7 +3,7 @@ import { useState } from 'react';
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
 import LabelInput from '../../common/LabelInput';
-import useToggle from '../../../lib/hooks/useToggle';
+import useToggle from '../../../hooks/useToggle';
 
 interface IAddressProps {
     findAddress: (val1: string, val2: string) => void;

@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCores } from '../../store/selectors/core';
 import ModalTemplate from "../common/ModalTemplate";
-import usePopupCss from './hooks/usePopupCss';
-import useHeaderScroll from './hooks/useHeaderScroll';
-import useCartLoader from './hooks/useCartLoader';
-import useViewedProduct from './hooks/useViewedProduct';
-import useInfiniteScroll from './hooks/useInfiniteScroll';
+import usePopupCss from '../../hooks/usePopupCss';
+import useHeaderScroll from '../../hooks/useHeaderScroll';
+import useCartLoader from '../../hooks/useCartLoader';
+import useViewedProduct from '../../hooks/useViewedProduct';
+import useInfiniteScroll from '../../hooks/useInfiniteScroll';
 import { ToastContainer, Flip } from 'react-toastify';
 import { injectStyle } from "react-toastify/dist/inject-style";
 

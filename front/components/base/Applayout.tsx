@@ -1,5 +1,5 @@
 import * as React from 'react';
-import useDarkmode from './hooks/useDarkmode';
+import useDarkmode from '../../hooks/useDarkmode';
 import CategoryMenu from './CategoryMenu';
 import Header from './Header';
 import Footer from './Footer';

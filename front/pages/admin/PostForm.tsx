@@ -10,7 +10,7 @@ import { addProduct, uploadImages, addCategory } from '../../store/thunks/produc
 import { deleteImage } from '../../store/slices/products';
 import SetColor from '../../components/admin/SetColor';
 import SetImage from '../../components/admin/SetImage';
-import useInputs from '../../lib/hooks/useInputs';
+import useInputs from '../../hooks/useInputs';
 import LabelInput from '../../components/common/LabelInput';
 import LabelTextArea from '../../components/common/LabelTextArea';
 import Button from '../../components/common/Button';

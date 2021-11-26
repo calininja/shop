@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadCart } from '../../../store/thunks';
-import { selectUsers } from '../../../store/selectors/user';
-import { selectOrders } from '../../../store/selectors/order';
+import { loadCart } from '../store/thunks';
+import { selectUsers } from '../store/selectors/user';
+import { selectOrders } from '../store/selectors/order';
 
 export default function useCartLoader() {
     const dispatch = useDispatch();

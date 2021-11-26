@@ -3,7 +3,7 @@ import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInUser } from '../../store/thunks/users';
 import { showModal } from '../../store/slices/cores';
-import useInputs from '../../lib/hooks/useInputs';
+import useInputs from '../../hooks/useInputs';
 import LabelInput from '../../components/common/LabelInput';
 import Button from '../../components/common/Button';
 import { selectUsers } from '../../store/selectors/user';
