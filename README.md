@@ -30,8 +30,10 @@ DB_DATABASE=shop
 ![shop_gif04](https://user-images.githubusercontent.com/39756786/133566622-617ba39a-3a80-421b-b9a0-02bf6014c44a.gif)
 ![shop_gif05](https://user-images.githubusercontent.com/39756786/133568000-590e6282-ca7c-4aa6-9841-ae275b133d51.gif)
 
+## features
 - 로그인 구현
 - 카테고리 구현
+- 장바구니 구현
 - 상품 리스트 인피니티 스크롤 구현
 - 리뷰 구현
 - 리뷰 페이징 구현
